@@ -1,0 +1,79 @@
+---
+layout: comment-page
+title: 隐形眼镜光度换算器
+comments: true
+permalink: /contact-lens-calculator/
+---
+
+<h1>{{ page.title }}</h1>
+<div>
+    <span>近视（球镜）度数：</span>
+        <select id="raw"><option value="0">请选择</option></select> 
+    <span>散光（柱镜）度数：</span>
+        <select id="ast"><option value="0">无</option></select> 
+    <p><br/>
+        <span id="result"></span>
+    </p>
+
+    <script type="text/javascript">
+    var rawEle = document.getElementById('raw');
+    var astEle = document.getElementById('ast');
+    var resultEle = document.getElementById('result');
+
+    var showResult = function(){
+        var raw = parseFloat(rawEle.value);
+        var ast = parseFloat(astEle.value);
+        var result;
+        var perfect = true;
+        if (raw == 0){
+            resultEle.innerHTML = "";
+            return;
+        }
+
+        if (ast != 0){
+            raw += ast / 2;
+            if (ast < -0.75 || ast < raw / 4){
+                perfect = false;
+            }
+        }
+        if (raw <= -4.00){
+            result = raw / (1 - 0.012 * raw)
+        }
+        else{
+            result = raw;
+        }
+        
+        var best = (parseInt(result / 0.25) * 0.25).toFixed(2);
+
+        msg = '隐形眼镜：<p>标准（首选）光度：<strong>' + best +
+        '</strong> 备选光度：' + (Number(best) + 0.25).toFixed(2) + ' 或 ' + (Number(best) - 0.25).toFixed(2) + '</p>';
+        if (!perfect){
+            msg += "<p>你选择的光度<strong>原则上</strong>无法通过普通（非散光）隐形眼镜得到完美矫正<br/>" +
+                   "但由于散光片难于购买，佩戴起来舒适性和稳定性也存在诸多问题<br/>" +
+                   "在对视觉要求不太高的情况下，仍然建议你尝试上述光度。</p>";
+        }
+
+        resultEle.innerHTML = msg;
+    }
+
+    var fillOptions = function(ele, st, end){
+        if (st == null){
+            st = -0.25;
+        }
+        if (end == null){
+            end = -11.50;
+        }
+        for(var i = st; i >= end; i -= 0.25){
+            var opt = document.createElement('option');
+            opt.value = i;
+            opt.innerText = i.toFixed(2) + 'D';
+            ele.appendChild(opt);
+        }
+        ele.onchange = showResult;
+    }
+
+
+    fillOptions(astEle, -0.25, -3.00);
+    fillOptions(rawEle, -1.00);
+    </script>
+</div>
