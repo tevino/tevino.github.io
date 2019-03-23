@@ -14,5 +14,5 @@ Hi, I'm Tevin, here are something about me:
 
 ## Contact
 - mail2tevin (at) gmail (dot) com
-- GPG Key: `gpg --recv-keys --keyserver pgp.mit.edu 96507B41`
-- Key fingerprint = `A6F0 D097 E644 4042 98DC  D5C5 55C4 71EA 9650 7B41`
+- GPG Key: `gpg --recv-keys CE7AE397`
+- Key fingerprint = `8C2B F926 C21E F854 02C0  23F8 C925 D186 CE7A E397`
