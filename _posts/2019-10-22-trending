@@ -1,0 +1,38 @@
+---
+layout: post
+title: "思潮有因"
+date: 2019-10-22 20:45
+comments: true
+---
+
+# 思潮有因
+
+用户界面（UI）设计领域近年较大的一次变革是[拟物][skeuomorphic_design]到[扁平][flat_design]的转变。
+
+[2007 年初代 iPhone 发布][ios1]时，用户界面均以拟物为目标设计，那时计算力不如现在发达，能够还原真实相对困难，iOS 对 UI 细节的雕琢也让人眼前一亮。
+
+[到了 2013 年][ios7]，还原真实不再困难，用户也逐渐接受虚拟的用户界面元素，再加上拟物的审美疲劳，极简设计被重新（在拟物流行之前，计算力更不发达，UI 非常简陋，大概也算被迫极简了，它们是 [这][ancient-ui-1] [样][ancient-ui-2] [的][ancient-ui-3]）提起，虽然它相比过去的拟物少了更多的细节，甚至刚出现时被人认为难看，到了今天，可以说是妥妥的主流了。
+
+[这是一张对比图][ios6_ios7_compare]，是扁平化设计首次全面引入 iOS(7) 前后的对比。
+
+将来随着 VR、AR 的发展，也许还原真实又会重新流行起来，抑或极简化设计的虚拟元素借助技术与实体世界出现在同一个画面中已被人们欣然接受，甚至一种结合两者特点的全新风格被提出。
+
+用户界面设计偏好的变化背后还有千千万万的因素在左右，但无论它是什么，**思潮、观念的变化都不会无故产生，凡事都有其背后的逻辑和原因**。
+
+> 任何深入研究历史的人都会发现：
+> 每一种新思想通常都是以前人的旧思想为基础，而一旦有一种新思想被提出来，马上就会出现另外一种和它抵触的思想，于是这两种对立的思想之间就会产生一种紧张状态，但这种紧张状态又会因为有人提出另外一种融合了两种思想长处的思想而消除。
+> 黑格尔把这个现象称为一种辩证过程。
+
+——[苏菲的世界][苏菲的世界]
+
+如果你没有了解过哲学：《苏菲的世界》是一本哲学启蒙书，哲学也许没有你想象的那么不切实际或神秘，事实上现代数学与自然科学都是哲学的细分学派演化而来，客观事实也是哲学的重要研究对象。
+
+[skeuomorphic_design]: https://en.wikipedia.org/wiki/Skeuomorph#Skeuomorphic_design "Skeuomorphic design"
+[flat_design]: https://en.wikipedia.org/wiki/Flat_design "Flat design"
+[ios1]: https://en.wikipedia.org/wiki/File:IPhone_OS_1_screenshot.jpg#/media/File:IPhone_OS_1_screenshot.jpg "iOS 1 home screen"
+[ios7]: https://en.wikipedia.org/wiki/File:IOS_7.1_homescreen.png#/media/File:IOS_7.1_homescreen.png "iOS 7 home screen"
+[ios6_ios7_compare]: https://images.app.goo.gl/mkfAiA5yXwosCNCs7 "iOS6 V.S. iOS7"
+[ancient-ui-1]: https://en.wikipedia.org/wiki/File:Smalltalk-76.png "Smalltalk-76 aka interim Alan Kay's Dynabook OS" 
+[ancient-ui-2]: https://en.wikipedia.org/wiki/File:Apple_Macintosh_Desktop.png#/media/File:Apple_Macintosh_Desktop.png "Original 1984 Macintosh desktop"
+[ancient-ui-3]: https://en.wikipedia.org/wiki/File:Windows1.0.png "Screenshot of Microsoft Windows 1.0 operating environment showing MS-DOS Executive and other applications"
+[苏菲的世界]: https://book.douban.com/subject/1045818/ "苏菲的世界 （挪威）乔斯坦·贾德"
