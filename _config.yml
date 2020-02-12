@@ -23,15 +23,19 @@ email: mail2tevin (at) gmail (dot) com
 description: >- # this means to ignore newlines until "baseurl:"
   文字是我个人思路的整理和记录，若碰巧能帮到你那就更棒了。
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://www.tevinzhang.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://www.tevinzhang.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: tevin_zhang
 github_username:  tevino
 
 # Build settings
 markdown: kramdown
 theme: minima
+minima:
+  social_links:
+    rss: rss
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 google_analytics: UA-48619989-2
 disqus:
