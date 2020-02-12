@@ -21,7 +21,7 @@ subtitle:         'Trying to write down some'
 title: Tevin's Archive
 email: mail2tevin (at) gmail (dot) com
 description: >- # this means to ignore newlines until "baseurl:"
-  文字是我个人思路的整理和记录，若碰巧能帮到你那就更棒了。
+  Feel free to leave a comment or contact.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.tevinzhang.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: tevin_zhang
