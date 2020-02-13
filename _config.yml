@@ -19,27 +19,36 @@ subtitle:         'Trying to write down some'
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Tevin's Archive
+author: Tevin
 email: mail2tevin (at) gmail (dot) com
 description: >- # this means to ignore newlines until "baseurl:"
   Feel free to leave a comment or contact.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://www.tevinzhang.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: tevin_zhang
-github_username:  tevino
 
 # Build settings
 markdown: kramdown
 theme: minima
+
+# configurations of minima v2.5.0
 minima:
-  social_links:
-    rss: rss
+  # Minima date format
+  # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+  date_format: "%Y-%m-%d"
+
+twitter_username: tevin_zhang
+github_username:  tevino
+rss: feed
+
+disqus:
+  shortname: tevino
+google_analytics: UA-48619989-2
+# end
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-google_analytics: UA-48619989-2
-disqus:
-  shortname: tevino
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
