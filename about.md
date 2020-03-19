@@ -9,7 +9,7 @@ Hi, I'm Tevin, here are things about me:
 
 - [Books and movies I ever read and watched](https://www.douban.com/people/tevin/)
 - [Things I made as a programmer publicly](https://github.com/tevino)
-
+- [Some random posts by me](https://t.me/TevinZhang)
 
 ## Contact
 - mail2tevin (at) gmail (dot) com
