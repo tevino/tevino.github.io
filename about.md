@@ -5,7 +5,7 @@ date: 2012-09-18 22:25
 comments: true
 ---
 
-Hi, I'm Tevin, here are some other things about me:
+Hi, I'm Tevin, here are things about me:
 
 - [Books and movies I ever read and watched](https://www.douban.com/people/tevin/)
 - [Things I made as a programmer publicly](https://github.com/tevino)
