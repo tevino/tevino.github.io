@@ -2,6 +2,8 @@
 layout: post
 title: "为什么上班是没有未来的"
 date: 2019-09-01 15:10:02
+redirect_from:
+  - /2019/09/01/wage-earners-no-future/
 comments: true
 ---
 

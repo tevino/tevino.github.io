@@ -2,6 +2,8 @@
 layout: post
 title: "选择隐形眼镜（二）"
 date: 2013-11-01 17:30
+redirect_from:
+  - /2013/11/01/choose-contact-lens-2/
 comments: true
 ---
 

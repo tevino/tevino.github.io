@@ -2,6 +2,8 @@
 layout: post
 title: "你对自己已经相当满意了，真的"
 date: 2014-10-21 10:24
+redirect_from:
+  - /2014/10/21/you-are-already-quite-satisfied-with-yourself/
 comments: true
 ---
 

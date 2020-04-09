@@ -2,6 +2,8 @@
 layout: post
 title: "选择隐形眼镜（一）"
 date: 2013-10-13 21:08
+redirect_from:
+  - /2013/10/13/choose-contact-lens/
 comments: true
 ---
 

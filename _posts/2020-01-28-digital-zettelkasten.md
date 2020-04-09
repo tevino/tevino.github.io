@@ -2,6 +2,8 @@
 layout: post
 title: "A digital approach to Luhmann’s Zettelkasten (Slip Box)"
 date: 2020-01-28 13:37:31
+redirect_from:
+  - /2020/01/28/digital-zettelkasten/
 comments: true
 ---
 
