@@ -26,4 +26,4 @@ Before I realized that I have so little time to do things I wanted to do, I was 
 Updated {{ page.date }}, from {{ page.location }}.
 
 [about_now]: https://nownownow.com/about
-[wage_no_future]: https://www.tevinzhang.com/2019/09/01/wage-earners-no-future/
+[wage_no_future]: https://www.tevinzhang.com/2019/09/01/wage-earners-no-future/
