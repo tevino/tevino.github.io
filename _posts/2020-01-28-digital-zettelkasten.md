@@ -7,8 +7,6 @@ redirect_from:
 comments: true
 ---
 
-# A digital approach to Luhmann’s Zettelkasten (Slip Box)
-
 Here's my digital approach to Luhmann's paper-based filing system in a modern(hopefully better) way, it tries to keep the benefits of the original approach like productivity gain and a solid accumulation of knowledge, the changes happen in the following three levels.
 
 
