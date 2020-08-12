@@ -7,12 +7,11 @@ redirect_from:
 comments: true
 ---
 
-Here's my digital approach to Luhmann's paper-based filing system in a modern(hopefully better) way, it tries to keep the benefits of the original approach like productivity gain and a solid accumulation of knowledge, the changes happen in the following three levels.
+- **Updated 2020-08-12**
+    - Added link to [Zettelkasten Early Adopters][zk_eas]
+    - Put the introduction of Zettelkasten at the beginning
 
-
-- Physical level
-- Logical level
-- Slip level
+---
 
 ## What is it?
 
@@ -53,7 +52,7 @@ Simply put, Niklas Luhmann kept notes on small papers stored in a wooden box, an
 Photo of “Zettelkasten” from [“Niklas Luhmann-Archiv”][Niklas Luhmann-Archiv] is licensed under [CC-BY-NC-SA 4.0][CC-BY-NC-SA 4.0].
 
 
-There are many good writings and materials about Niklas Luhmann’s slip box, like [3] [9] [10]. You may read [3] to get to know what it is before further reading, here are some facts about it.
+There are many good writings [3] and materials [9] [10] about Niklas Luhmann’s slip box. You may read [3] to get to know what it is before further reading, here are some facts about it.
 
 
 - Two collections in total
@@ -85,6 +84,13 @@ There are many good writings and materials about Niklas Luhmann’s slip box, li
 
 
 ## The digital approach
+
+Here's my digital approach to Luhmann's paper-based filing system in a modern(hopefully better) way, it tries to keep the benefits of the original approach like productivity gain and a solid accumulation of knowledge, the changes happen in the following three levels.
+
+- Physical level
+- Logical level
+- Slip level
+
 
 It is recommended to get to know Luhmann’s slip box before reading the content below.
 
@@ -198,6 +204,9 @@ By embedding it in every single slip, the slip becomes more self-contained.
 - **Without writing, there is no sophisticated thinking**, since both short and long term memory of human brain are limited [7]
 - The system reflects not only validated knowledge but also the **thought process(via the linking)**, including potential mistakes and blind alleys that were later revised but **NOT** removed from the files, instead, a new card with revision may be added if needed [3]
 
+
+To know more about best practice on Zettelkasten, subscribe to the [Zettelkasten Early Adopters][zk_eas], I'll share more with you when there're enough subscribers.
+
 ---
 
 1. Berners-Lee, Tim. The Original Proposal of the WWW, HTMLized. Mar. 1989, https://www.w3.org/History/1989/proposal.html.
@@ -216,4 +225,5 @@ By embedding it in every single slip, the slip becomes more self-contained.
 [Zettelkasten Photo]: /assets/zettelkasten.jpg
 [Niklas Luhmann-Archiv]: https://niklas-luhmann-archiv.de/bestand
 [CC-BY-NC-SA 4.0]: https://creativecommons.org/licenses/by-nc-sa/4.0/
+[zk_eas]: http://eepurl.com/haGi4D
 
