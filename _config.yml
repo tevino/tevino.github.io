@@ -22,7 +22,7 @@ email: mail2tevin (at) gmail (dot) com
 description: >- # this means to ignore newlines until "baseurl:"
   Sharing is caring, feel free to leave a comment or contact.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://www.tevinzhang.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://tevinzhang.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 markdown: kramdown
