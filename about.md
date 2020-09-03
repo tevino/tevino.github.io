@@ -14,5 +14,5 @@ Hi, I'm Tevin, here are things about me:
 ## Contact
 
 - mail2tevin (at) gmail (dot) com
-- My PGP key is [8C2BF926C21EF85402C023F8C925D186CE7AE397](https://keys.openpgp.org/vks/v1/by-fingerprint/8C2BF926C21EF85402C023F8C925D186CE7AE397)
+- My PGP key is [8C2BF926C21EF85402C023F8C925D186CE7AE397](http://keys.gnupg.net/pks/lookup?op=get&search=0x8C2BF926C21EF85402C023F8C925D186CE7AE397)
 - It's OK to just say hi
