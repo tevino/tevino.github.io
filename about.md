@@ -11,7 +11,7 @@ Open-minded, science believer, life-time learner, understand this world with psy
 
 - [Books and movies I ever read and watched](https://www.douban.com/people/tevin/)
 - [Things I made as a programmer publicly](https://github.com/tevino)
-- [Some random posts by me](https://t.me/ConsciousnessGenerator)
+- [Curated random things by me](https://t.me/ConsciousnessGenerator)
 
 ### My avatar
 
