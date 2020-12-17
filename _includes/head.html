@@ -19,4 +19,16 @@
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
+  <script type="application/json" class="js-hypothesis-config">
+    {
+      "theme": "clean",
+      "focus": {
+        "user": {
+          "username": "tevin",
+          "displayName": "Tevin Zhang"
+        }
+      }
+    }
+  </script>
+  <script async src="https://hypothes.is/embed.js"></script>
 </head>
