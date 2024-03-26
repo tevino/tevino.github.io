@@ -1,0 +1,49 @@
+<footer class="site-footer h-card">
+    <data class="u-url" value="{{ "/" | relative_url }}"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            {% if page.all_langs %}
+              {% assign feed_path=site.feed.path %}
+              {% assign suffix = " EN + ZH" %}
+            {% else %}
+              {% assign feed_path = page.lang | append: "/feed.xml" %}
+              {% assign suffix = page.lang | upcase | prepend: " " %}
+            {% endif %}
+            <a href="{{ feed_path | default: 'feed.xml' | absolute_url }}">
+              <svg class="svg-icon orange">
+                <use xlink:href="{{ 'assets/minima-social-icons.svg#rss' | relative_url }}"></use>
+              </svg><span>Subscribe{{ suffix }}</span>
+            </a>
+          </p>
+        {%- if site.author %}
+          <ul class="contact-list">
+            {% if site.author.name -%}
+              <li class="p-name">{{ site.author.name | escape }}</li>
+            {% endif -%}
+            {% if site.author.email -%}
+              <li><a class="u-email" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+            {%- endif %}
+          </ul>
+          {%- include pgp-key.html -%}
+        {%- endif %}
+        </div>
+        <div class="footer-col">
+          {%- include cc.html -%}
+          <p>{{ site.description | escape | markdownify }}</p>
+        </div>
+      </div>
+  
+      <div class="social-links">
+        {%- include social.html -%}
+      </div>
+  
+    </div>
+  
+  </footer>
+
+{% comment %} Matomo tracking {% endcomment %}
+<img referrerpolicy="no-referrer-when-downgrade" src="https://a.tevinzhang.com/m/matomo.php?idsite=1&amp;rec=1" style="border:0" alt="" />

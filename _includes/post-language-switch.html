@@ -1,0 +1,22 @@
+{%- comment -%} this file works for both pages and posts {%- endcomment -%}
+
+{%- assign current_lang = page.lang | default: site.default_lang -%}
+{% if page.slug != nil %}
+  {% assign page_translations = site.documents | where: "slug", page.slug | where_exp: "item", "item.lang != current_lang" | where_exp: "item", "item.published != false" %}
+{% endif %}
+{% if page_translations.size <= 0 %}
+  {% assign page_translations = site.pages | where: "slug", page.slug | where_exp: "item", "item.lang != current_lang" %}
+{% endif %}
+
+<p>
+{% for translation in page_translations %}
+{% if translation.url %}
+<a class="page-link" href="{{ translation.url | relative_url }}" title="{{ translation.lang | escape }}">
+  <img class="svg-icon" src="/assets/language.svg" alt="{{ translation.lang | escape }}" />
+</a>
+{% endif %}
+{% endfor %}
+{%- if page.machine_translated -%}
+  {% include translation-warning.html -%}
+{%- endif -%}
+</p>

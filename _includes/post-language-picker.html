@@ -1,0 +1,21 @@
+{%- comment -%} this file works for both pages and posts {%- endcomment -%}
+
+{%- assign current_lang = post.lang | default: site.default_lang -%}
+{% if post.slug != nil %}
+  {% assign post_translations = site.documents | where: "slug", post.slug | where_exp: "item", "item.lang != current_lang" | where_exp: "item", "item.published != false" %}
+{% endif %}
+{% if post_translations.size <= 0 %}
+  {% assign post_translations = site.pages | where: "slug", post.slug | where_exp: "item", "item.lang != current_lang" %}
+{% endif %}
+
+{% if post_translations.size > 0 %}
+<span>
+{% for translation in post_translations %}
+  {% if translation.url %}
+  <a class="page-link" href="{{ translation.url | relative_url }}" title="{{ translation.lang | escape }}">
+    {{ translation.lang | upcase }}
+  </a>
+  {% endif %}
+{% endfor %}
+</span>
+{% endif %}

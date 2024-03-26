@@ -1,0 +1,8 @@
+{%- assign current_language = page.lang | default: site.default_lang -%}
+{% for language in site.languages %}
+    {% if language.code != current_language %}
+    <a class="page-link" href="{{ language.code | relative_url }}" title="{{ language.name | escape }}">
+        <img class="svg-icon" src="/assets/language.svg" alt="{{ language.name | escape }}" />
+    </a>
+    {% endif %}
+{% endfor %}

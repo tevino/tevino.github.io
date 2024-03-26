@@ -1,0 +1,26 @@
+---
+layout: post
+---
+
+{{ content }}
+
+<footer class="site-footer h-card">
+    {%- if page.meta -%}
+    <table class="post-meta">
+        <tbody>
+            {%- for meta in page.meta -%}
+            <tr>
+                <th>{{ meta.name | escape }}</th>
+                <td>{{ meta.description | markdownify }}</td>
+            </tr>
+            {%- endfor -%}
+        </tbody>
+    </table>
+    {%- endif -%}
+
+    {%- if page.lang == "zh" -%}
+    {{ site.lab_footer_zh | markdownify }}
+    {%- else -%}
+    {{ site.lab_footer_en | markdownify }}
+    {%- endif -%}
+</footer>
