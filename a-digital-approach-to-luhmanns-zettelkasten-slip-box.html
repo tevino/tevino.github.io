@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>A digital approach to Luhmann’s zettelkasten (slip box) | Tevin Zhang</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="A digital approach to Luhmann’s zettelkasten (slip box)" />
+<meta name="author" content="Tevin Zhang" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="This post is a part of The Zettelkasten Manual. This article assumes the reader knows about Luhmann’s Zettelkasten, for those who don’t, read this first. Here’s my digital approach to Luhmann’s paper-based filing system in a modern(hopefully better) way, it tries to keep the benefits of the original approach like productivity gain and a solid accumulation of knowledge, the changes happen in the following three levels. Physical level Logical level Slip level" />
+<meta property="og:description" content="This post is a part of The Zettelkasten Manual. This article assumes the reader knows about Luhmann’s Zettelkasten, for those who don’t, read this first. Here’s my digital approach to Luhmann’s paper-based filing system in a modern(hopefully better) way, it tries to keep the benefits of the original approach like productivity gain and a solid accumulation of knowledge, the changes happen in the following three levels. Physical level Logical level Slip level" />
+<link rel="canonical" href="https://tevinzhang.com/a-digital-approach-to-luhmanns-zettelkasten-slip-box" />
+<meta property="og:url" content="https://tevinzhang.com/a-digital-approach-to-luhmanns-zettelkasten-slip-box" />
+<meta property="og:site_name" content="Tevin Zhang" />
+<meta property="og:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-01-28T21:37:31+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="twitter:title" content="A digital approach to Luhmann’s zettelkasten (slip box)" />
+<meta name="twitter:site" content="@tevin_zhang" />
+<meta name="twitter:creator" content="@tevin_zhang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tevin Zhang"},"dateModified":"2024-09-11T16:36:44+08:00","datePublished":"2020-01-28T21:37:31+08:00","description":"This post is a part of The Zettelkasten Manual. This article assumes the reader knows about Luhmann’s Zettelkasten, for those who don’t, read this first. Here’s my digital approach to Luhmann’s paper-based filing system in a modern(hopefully better) way, it tries to keep the benefits of the original approach like productivity gain and a solid accumulation of knowledge, the changes happen in the following three levels. Physical level Logical level Slip level","headline":"A digital approach to Luhmann’s zettelkasten (slip box)","image":"https://tevinzhang.com/assets/avatar.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://tevinzhang.com/a-digital-approach-to-luhmanns-zettelkasten-slip-box"},"url":"https://tevinzhang.com/a-digital-approach-to-luhmanns-zettelkasten-slip-box"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://tevinzhang.com/feed.xml" title="Tevin Zhang" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#686868">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<meta name=”robots” content=”noai, noimageai”>
+
+
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "htf4lzs4f1");
+</script>
+
+
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.tevinzhang.com"]);
+  _paq.push(["setDomains", ["*.tevinzhang.com","*.tevino.github.io"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//a.tevinzhang.com/m/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//a.tevinzhang.com/m/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+
+</head><body><header class="site-header">
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/">Tevin Zhang</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger">
+            <label for="nav-trigger">
+                <span class="menu-icon">
+                    <svg viewbox="0 0 18 15" width="18px" height="15px">
+                        <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+                    </svg>
+                </span>
+            </label>
+
+            <div class="trigger">
+<a class="page-link" href="/projects">Projects</a><a class="page-link" href="/now/">Now</a><a class="page-link" href="/about">About</a><a class="page-link" href="/en/blog">Blog</a><a class="page-link" href="/curated-corner">Curated Corner</a>
+</div>
+        </nav>
+</div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">A digital approach to Luhmann's zettelkasten (slip box)</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2020-01-28T21:37:31+08:00" itemprop="datePublished">
+        2020-01-28
+      </time></p>
+
+
+<p class="post-meta">
+
+  <span>EN</span>
+
+  <span> | </span>
+      <a class="page-link" href="/zh/a-digital-approach-to-luhmanns-zettelkasten-slip-box" title="ZH">
+        ZH
+      </a>
+</p>
+</header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><strong>This post is a part of <a href="https://thezettelkasten.com" target="_blank" rel="noopener">The Zettelkasten Manual</a></strong>.</p>
+<hr>
+<p>This article assumes the reader knows about Luhmann’s Zettelkasten, for those who don’t, read <a href="/luhmanns-zettelkasten-slip-box">this</a> first.</p>
+<p>Here’s my digital approach to Luhmann’s paper-based filing system in a modern(hopefully better) way, it tries to keep the benefits of the original approach like productivity gain and a solid accumulation of knowledge, the changes happen in the following three levels.</p>
+<ul>
+<li>Physical level</li>
+<li>Logical level</li>
+<li>Slip level</li>
+</ul>
+<!--more-->
+<p>It is recommended to get to know Luhmann’s slip box before reading the content below.</p>
+<h3 id="physical-level">Physical level</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Paper</th>
+<th align="left">Digital</th>
+<th align="left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Hand-written Paper Slips</td>
+<td align="left">Plain text files</td>
+<td align="left">To last a lifetime</td>
+</tr>
+<tr>
+<td align="left">Wooden Box</td>
+<td align="left">A folder encapsulating the above files</td>
+<td align="left">To last a lifetime, to store the slips and make it easy to find them for a human</td>
+</tr>
+</tbody>
+</table>
+<h4 id="why-plain-text">Why plain text</h4>
+<p>Plain text files could be read and write by a wild range of applications after decades, while specifications of many other formats may changed a lot that your precious files created by an older version of the application are unable to be opened by the new version, or even worse, the application or format just cease to exist.</p>
+<h4 id="folder-form">Folder form</h4>
+<p>A folder could be in any form, as long as it serves the purpose - To store the slips and make it easy to find them for a human.
+A simple folder on the file system is fine, if you are using DEVONthink <sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup> like me, a folder in it (which does not result in a single folder on the file system) works too.</p>
+<h3 id="logical-level">Logical level</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Aspect</th>
+<th align="left">Paper</th>
+<th align="left">Digital</th>
+<th align="left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Numbering System</td>
+<td align="left">At the top-left of slips e.g. <code>1/1b2c</code>
+</td>
+<td align="left">The file name and prefix of the title of plaintext files e.g. <code>1.0b2c.md</code>
+</td>
+<td align="left">An unique ID for every slip, and visual aid for human</td>
+</tr>
+<tr>
+<td align="left">References among Slips</td>
+<td align="left">ID of the slip to be referenced written on other slips</td>
+<td align="left">Markdown links of the slip to be referenced in other slips</td>
+<td align="left">The key to keep relationships between slips</td>
+</tr>
+</tbody>
+</table>
+<h4 id="numbering-system">Numbering system</h4>
+<p>Unlike other digital approaches <sup class="footnote-ref"><a href="#fn2" id="fnref2">2</a></sup> <sup class="footnote-ref"><a href="#fn3" id="fnref3">3</a></sup> that use a timestamp to name the slip, I choose to keep Luhmann’s way of numbering for two reasons:</p>
+<ol>
+<li>The timestamp is too long for a person to remember, thus failed to serve the purpose of a visual aid, which I regarded as a crucial help for one to make links manually.
+<ul>
+<li>However, the creation time of the slip could still be kept in the file.</li>
+</ul>
+</li>
+<li>The sequence level of slips are obvious on the list of files in a folder sorted by name
+<ul>
+<li>So one can navigate easily between adjacent sequence levels, which is likely to be very close to the paper-based workflow done by Luhmann where slips stored together are close in sequence.</li>
+</ul>
+</li>
+</ol>
+<p>There are two tiny changes to Luhmann’s approach:</p>
+<ol>
+<li>
+<strong>Use <code>.</code> instead of <code>/</code></strong>
+<ul>
+<li>The character <code>/</code> is not allowed in a file name for most file systems</li>
+</ul>
+</li>
+<li>Use <code>1.0.md</code> instead of <code>1.md</code> for the first slip of every top-level subject
+<ul>
+<li>In this way, a normal sort by name could make the first slip(<code>1.0.md</code>) ordered before all other slips(e.g. <code>1.1</code>, <code>1.2a</code>, <code>1.3b</code>) instead of after</li>
+</ul>
+</li>
+</ol>
+<h4 id="references">References</h4>
+<p><strong>The following markup works with DEVONthink<sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup>, for those who don’t use it, just make sure the application (e.g. a markdown editor) of your choice is capable to jump between files and use the supported markup to create a reference.</strong></p>
+<p>References should be written in explicit form:</p>
+<pre><code>This is a link to a slip [[1.0]]
+
+This is a link to a slip [1.0](1.0)
+</code></pre>
+<p>Implicit form like below doesn’t provide a visual aid for the ID of slips:</p>
+<pre><code>This link doesn't tell the ID of [the slip](1.0) to be referenced
+</code></pre>
+<h3 id="slip-level">Slip level</h3>
+<p>A slip is a simple Markdown file, here is an example of <code>1.0.md</code>:</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">Date</span><span class="pi">:</span> <span class="s">2019-12-31 11:07:38</span>
+<span class="nn">---</span>
+
+<span class="gh"># 1.0 This is the title of the slip</span>
+
+The content of the slip goes here.
+
+This is an example of a reference to another slip [[1.10a]]
+
+This is an example of citation [^1]<span class="sb">
+
+
+</span><span class="p">---
+</span>
+<span class="p">[</span><span class="ss">^1</span><span class="p">]:</span> <span class="sx">Here</span> sits the bibliography
+</code></pre></div></div>
+<p>Beside the ordinary slips, there are three special kinds of slips in Luhmann’s collection.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Kind</th>
+<th align="left">Paper</th>
+<th align="left">Digital</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Contents</td>
+<td align="left">A slip contains a list of references to top-level subjects</td>
+<td align="left">A single file contains links to top-level slips</td>
+</tr>
+<tr>
+<td align="left">Index</td>
+<td align="left">A slip contains major subjects with references to related slips</td>
+<td align="left">A single file contains links of different subjects to related slips</td>
+</tr>
+<tr>
+<td align="left">Bibliography</td>
+<td align="left">A slip contains bibliographic information of literatures sorted alphabetically</td>
+<td align="left">bibliographic information embedded at the bottom of every file</td>
+</tr>
+</tbody>
+</table>
+<h4 id="auto-generation">Auto generation</h4>
+<p><code>Contents</code> could be automatically generated by scanning the entire slip box folder, but Index is mean to be created manually.</p>
+<h4 id="bibliography">Bibliography</h4>
+<p>Bibliographic information is rather tedious for a human to write multiple times on paper, but it’s not a problem in the digital world with the help of applications like Zotero.</p>
+<p>By embedding it in every single slip, the slip becomes more self-contained.</p>
+<h2 id="takeaways">Takeaways</h2>
+<ul>
+<li>The <strong>selective</strong> links between cards made it possible to retrieve more than what was intended when the notes were initially taken <sup class="footnote-ref"><a href="#fn4" id="fnref4">4</a></sup>
+<ul>
+<li>That’s why the slip box can “communicate” with human, for:
+<ol>
+<li>One of the basic presuppositions of communication is that the partners can mutually suprise each other  <sup class="footnote-ref"><a href="#fn5" id="fnref5">5</a></sup>
+</li>
+<li>We have been educated to expect something useful from our activities <sup class="footnote-ref"><a href="#fn6" id="fnref6">6</a></sup>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<strong>Without writing, there is no sophisticated thinking</strong>, since both short and long term memory of human brain are limited <sup class="footnote-ref"><a href="#fn5" id="fnref5">5</a></sup>
+</li>
+<li>The system reflects not only validated knowledge but also the <strong>thought process(via the linking)</strong>, including potential mistakes and blind alleys that were later revised but <strong>NOT</strong> removed from the files, instead, a new card with revision may be added if needed <sup class="footnote-ref"><a href="#fn4" id="fnref4">4</a></sup>
+</li>
+</ul>
+<p>For a deeper understanding of Zettelkasten, check out <a href="https://thezettelkasten.com" target="_blank" rel="noopener">The Zettelkasten Manual</a>.</p>
+<hr>
+<section class="footnotes">
+<ol>
+<li id="fn1">
+<p>DEVONthink. DEVONtechnologies, LLC, <a href="https://www.devontechnologies.com/apps/devonthink" target="_blank" rel="noopener">https://www.devontechnologies.com/apps/devonthink</a>. <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2">
+<p>Schallner, Rene. Renerocksai/Sublime_zk. 2017. 2019. GitHub, <a href="https://github.com/renerocksai/sublime_zk" target="_blank" rel="noopener">https://github.com/renerocksai/sublime_zk</a>. <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn3">
+<p>Tietze, Christian. The Archive (MacOS) • Zettelkasten Method. <a href="https://zettelkasten.de/the-archive/" target="_blank" rel="noopener">https://zettelkasten.de/the-archive/</a>. Accessed 31 Dec. 2019. <a href="#fnref3" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn4">
+<p>Schmidt, Johannes F. K. “Niklas Luhmann’s Card Index: The Fabrication of Serendipity.” Sociologica, vol. Vol 12, July 2018, pp. 53-60 Pages. DOI.org (Datacite), doi:10.6092/ISSN.1971-8853/8350. <a href="#fnref4" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn5">
+<p>Niklas, Luhmann. Communicating with Slip Boxes by Niklas Luhmann. <a href="http://luhmann.surge.sh/communicating-with-slip-boxes" target="_blank" rel="noopener">http://luhmann.surge.sh/communicating-with-slip-boxes</a>. Accessed 27 Dec. 2019. <a href="#fnref5" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn6">
+<p>Luhmann, Niklas. Learning How to Read by Niklas Luhmann. <a href="http://luhmann.surge.sh/learning-how-to-read" target="_blank" rel="noopener">http://luhmann.surge.sh/learning-how-to-read</a>. Accessed 27 Dec. 2019. <a href="#fnref6" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+  </div>
+<a class="u-url" href="/a-digital-approach-to-luhmanns-zettelkasten-slip-box" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" value="/"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            
+            <a href="https://tevinzhang.com/en/feed.xml">
+              <svg class="svg-icon orange">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg><span>Subscribe (English Only)</span>
+            </a>
+          </p>
+          <ul class="contact-list">
+            <li class="p-name">Tevin Zhang</li>
+            <li><a class="u-email" href="mailto:hey(at)tevinzhang(dot)com">hey(at)tevinzhang(dot)com</a></li>
+              <li><a href="/pgp.asc" rel="pgpkey authn">PGP Key</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p><span>English</span><span> | </span><a class="page-link" href="/zh" title="仅中文">中文</a></p>
+<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://tevinzhang.com">Tevin Zhang</a> © 2024 — CC BY-NC-SA 4.0<p></p>
+        </div>
+      </div>
+  
+      <div class="social-links">
+<ul class="social-media-list">
+<li>
+  <a rel="me noopener" href="https://t.me/tevino" target="_blank" title="Personal Telegram">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#telegram"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Things I made as a programmer publicly">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Books and movies I ever read and watched">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#douban"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://mastodon.tevinzhang.com/@tevin" target="_blank" title="The fediverse">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#mastodon"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+</div>
+  
+    </div>
+  
+  </footer>
+</body>
+
+</html>

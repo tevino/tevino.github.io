@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>家用小型管理交换机对比 | Tevin Zhang</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="家用小型管理交换机对比" />
+<meta name="author" content="Tevin Zhang" />
+<meta property="og:locale" content="zh" />
+<meta name="description" content="需求是 VLAN 单线复用，不用 IPTV 但需要把弱电箱里的网口通过一根线交换到另一个房间的路由上，同时兼顾拨号。千兆交换够用，也是考虑到目前更高带宽设备的普及度和性价比后的一个更实际的选择。" />
+<meta property="og:description" content="需求是 VLAN 单线复用，不用 IPTV 但需要把弱电箱里的网口通过一根线交换到另一个房间的路由上，同时兼顾拨号。千兆交换够用，也是考虑到目前更高带宽设备的普及度和性价比后的一个更实际的选择。" />
+<link rel="canonical" href="https://tevinzhang.com/zh/home-switches-comparison" />
+<meta property="og:url" content="https://tevinzhang.com/zh/home-switches-comparison" />
+<meta property="og:site_name" content="Tevin Zhang" />
+<meta property="og:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-06-03T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="twitter:title" content="家用小型管理交换机对比" />
+<meta name="twitter:site" content="@tevin_zhang" />
+<meta name="twitter:creator" content="@tevin_zhang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tevin Zhang"},"dateModified":"2024-09-25T21:48:10+08:00","datePublished":"2024-06-03T00:00:00+08:00","description":"需求是 VLAN 单线复用，不用 IPTV 但需要把弱电箱里的网口通过一根线交换到另一个房间的路由上，同时兼顾拨号。千兆交换够用，也是考虑到目前更高带宽设备的普及度和性价比后的一个更实际的选择。","headline":"家用小型管理交换机对比","image":"https://tevinzhang.com/assets/avatar.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://tevinzhang.com/zh/home-switches-comparison"},"url":"https://tevinzhang.com/zh/home-switches-comparison"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://tevinzhang.com/feed.xml" title="Tevin Zhang" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#686868">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<meta name=”robots” content=”noai, noimageai”>
+
+
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "htf4lzs4f1");
+</script>
+
+
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.tevinzhang.com"]);
+  _paq.push(["setDomains", ["*.tevinzhang.com","*.tevino.github.io"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//a.tevinzhang.com/m/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//a.tevinzhang.com/m/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+
+</head><body><header class="site-header">
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/zh">Tevin Zhang</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger">
+            <label for="nav-trigger">
+                <span class="menu-icon">
+                    <svg viewbox="0 0 18 15" width="18px" height="15px">
+                        <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+                    </svg>
+                </span>
+            </label>
+
+            <div class="trigger">
+<a class="page-link" href="/zh/projects">项目</a><a class="page-link" href="/zh/now/">近况</a><a class="page-link" href="/zh/about">关于</a><a class="page-link" href="/zh/blog">博客</a><a class="page-link" href="/zh/movies">电影</a><a class="page-link" href="/zh/curated-corner">精选</a>
+</div>
+        </nav>
+</div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">家用小型管理交换机对比</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2024-06-03T00:00:00+08:00" itemprop="datePublished">
+        2024-06-03
+      </time>~<time class="dt-modified" datetime="2024-09-11T00:00:00+08:00" itemprop="dateModified">
+          2024-09-11
+        </time></p>
+
+
+<p class="post-meta">
+
+  
+      <a class="page-link" href="/home-switches-comparison" title="EN">
+        EN
+      </a>
+
+  <span> | </span><span>ZH</span>
+</p>
+</header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>需求是 VLAN 单线复用，不用 IPTV 但需要把弱电箱里的网口通过一根线交换到另一个房间的路由上，同时兼顾拨号。千兆交换够用，也是考虑到目前更高带宽设备的普及度和性价比后的一个更实际的选择。</p>
+<p>按说通过配置电信的光猫可以完成这一需求，但配好后 PPPOE 会定时掉线，同时光猫的 DHCP 似乎没办法彻底关闭，关掉后 LAN 口上的设备有时还是会被分到 IP，像是电信的某种检测机制的结果，工作人员来换过一个光猫，但不解决问题，细节他们也不清楚，于是我决定不依赖外部不可控设备<sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup>，在弱电箱里再加一个交换机来实现。</p>
+<h2 id="a-hrefhttpswwwmercurycomcomcnproduct-339-1html-sg105-proa"><a href="https://www.mercurycom.com.cn/product-339-1.html" target="_blank" rel="noopener">水星 SG105 Pro</a></h2>
+<p>常见品牌里比较便宜的一款管理型交换机，配置 UI 很简陋，比如 IGMP Snooping 只有开、关，Link Aggregation 没有模式或协议的选择，没有独立文档、不过 UI 上有简单一两句话的文字帮助，另外我发现这是我唯一一个不支持英文 UI 的网络设备。</p>
+<p><img src="/assets/sg105-ui-1.png" alt="管理后台截图1"></p>
+<p><img src="/assets/sg105-ui-2.png" alt="管理后台截图2"></p>
+<p>虽然 UI 不算好用但好在不复杂，简单配置后很快能按预期工作了。但我在管理后台的统计中发现一些「失败收包」，比例不高，大约六秒一个，同期对端的设备上没有任何丢包或错误。通过交换网线和端口排除掉了端口和网线的因素，目前观察到「失败收包」只出现在对端是路由器的端口，而且使用上没有发现明显的网络问题，我尝试调整了 RSTP 和 IGMP Snooping 之类的配置，问题依旧，暂时不打算花时间查下去了。</p>
+<p><img src="/assets/sg105-failure.png" alt="管理后台失败收包截图"></p>
+<p>同样的现象也被网上其他人观察到，有的说影响到了 IPTV<sup class="footnote-ref"><a href="#fn2" id="fnref2">2</a></sup>，还有网友发现只要不配置 hybrid<sup class="footnote-ref"><a href="#fn3" id="fnref3">3</a></sup> 端口就不会有失败收包<sup class="footnote-ref"><a href="#fn4" id="fnref4">4</a></sup>，不过 hybrid 是我的需求之一。</p>
+<p>我把情况反馈给水星官方技术支持，对方表示如果网络没有问题就不要管，这个问题会反馈修复，但目前没有计划。听语气像是个已知问题，而且有造成网络问题的可能。</p>
+<p>我去看了下官方的固件，最新版也是唯一的版本，发布于六年前 <code>1.0.0 Build 20180515 Rel.60684</code>，虽然目前没有发现问题<sup class="footnote-ref"><a href="#fn5" id="fnref5">5</a></sup>，但我不太相信这个产品将来会发新固件解决任何问题，所以打算换掉。</p>
+<h2 id="a-hrefhttpswwwnetgearcomsupportproductgs105ev2-gs105e-v2asup-classfootnote-refa-hreffn6-idfnref66asup">
+<a href="https://www.netgear.com/support/product/gs105ev2/" target="_blank" rel="noopener">网件 GS105e v2</a><sup class="footnote-ref"><a href="#fn6" id="fnref6">6</a></sup>
+</h2>
+<p>千兆、五口、简单网管——在 spec 上和上一款非常接近的交换机，UI 的结构很相似，我怀疑主控都是相同的。</p>
+<p>查看两个机器的拆解(<a href="https://youtu.be/wibHqsDoqMw?t=269" title="Netgear GS105e Full Teardown Review" target="_blank" rel="noopener">1</a>, <a href="https://youtu.be/KL85i8kUjZM?t=23" title="水星SG105 Pro拆机" target="_blank" rel="noopener">2</a>) 同时自己拆机查看，感觉网件整体用料上比较足<sup class="footnote-ref"><a href="#fn7" id="fnref7">7</a></sup>，我也考虑过水星更简单的 PCB 也许会有更低的故障率，不过<a href="https://www.downloads.netgear.com/files/GDC/Plus_Switches/Gigabit_Ethernet_Plus_Switches_DS.pdf" target="_blank" rel="noopener">网件的手册</a>上高达两百五十万小时的 MTBF 打消了我的顾虑。</p>
+<p>这款交换机：</p>
+<ul>
+<li>没有 Link Aggregation</li>
+<li>可以给端口添加描述</li>
+<li>检测到回环 LED 会同频闪</li>
+<li>支持开启 DHCP 同时使用备用静态地址</li>
+<li>线缆测试全选没有 bug
+<ul>
+<li>线缆正常连接时不显示距离，检测结果稳定（水星会显示距离<sup class="footnote-ref"><a href="#fn8" id="fnref8">8</a></sup>，但多次测试结果相差有几十米）</li>
+</ul>
+</li>
+<li>VLAN 配置有防呆
+<ul>
+<li>例如从唯一 VLAN 移除某端口前会要求设置端口 PVID</li>
+</ul>
+</li>
+<li>能同时支持 802.1p 和 DSCP（水星只能二选一）</li>
+<li>UI 支持英、德、日三国语言</li>
+<li>内置帮助比较详细，常常需要翻页</li>
+<li>有 ACL 且登陆没有用户名（单用户系统这么设计很科学）</li>
+<li>设备发现工具支持 macOS、Linux、Windows</li>
+<li>支持省电模式（IEEE 802.3az），最大功耗 2.6W
+<ul>
+<li>有意思的是水星的包装、说明书和官网都没有任何关于功率的介绍，这竟然合规吗？</li>
+<li>实测下来，四口在用的情况下，两个设备均在 1.7 watt 左右</li>
+</ul>
+</li>
+</ul>
+<p><img src="/assets/gs105-ui.png" alt="网件管理后台截图"></p>
+<p>固件更新方面网件比水星好不少，同样作为在售型号，这款从最初 <code>v1.2.0.5</code> 到 <code>v1.6.0.11</code> 有过 11 次更新，最近一次在 2021-11-12，看上去是一个官方还在维护的产品。</p>
+<p>网件的线缆检测也挺好用，可以检测阻抗不匹配的问题（这个情况水星没有处理<sup class="footnote-ref"><a href="#fn9" id="fnref9">9</a></sup>，结果将十几米的线缆报告成了八十几米），如果不是成品网线，连接端出问题的概率应该会比线材本身大，我的测试结果目前反应最近自己新打的水晶头没问题，但老的被检测出 mismatch<sup class="footnote-ref"><a href="#fn10" id="fnref10">10</a></sup>，等我有机会借到工具，换掉老水晶头，再来更新更换后的检测结果。</p>
+<p><img src="/assets/gs105-cable-tester-result.png" alt="线缆测试结果"></p>
+<h2 id="section">总结</h2>
+<p>此前我对网件的设备印象不太好——又贵又慢，但这次不同，网件的设备从通电到开始正常工作比水星甚至快一些，另外网件也很好地遵守了各类工业标准，产品质量令人放心，且文档丰富，可能拿水星和它比不太公平，毕竟价格有一定差距，但这次的经验让我刷新了对网件的认知，我很满意。</p>
+<section class="footnotes">
+<ol>
+<li id="fn1">
+<p>光猫对用户来说是个黑盒，可配置项不多，型号、功能也不受控制，有些细节只能依赖电信的工作人员帮忙调整。 <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2">
+<p><a href="https://www.zhihu.com/question/598457620/answer/3007190994" target="_blank" rel="noopener">为何交换机划分VLAN后出现失败收包？</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn3">
+<p>一个端口同时承载 tagged 和 untagged 数据包。 <a href="#fnref3" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn4">
+<p>网友使用的是 TPLink 的交换机（硬件版本：<code>TL-SG2005P 2.0</code> 软件版本：<code>1.0.0 Build 20200214 Rel.62282</code>），考虑到这两品牌的关系以及 UI 和水星一致，同样的操作大概率也适用于水星。 <a href="#fnref4" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn5">
+<p>有一个现象不知道是否相关：开着 iperf 打满千兆的情况下，同一个端口上的其他流量会被严重阻塞，仿佛永远排不上优先级，关掉 iperf 立刻可解。 <a href="#fnref5" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn6">
+<p>v1 已经 end-of-life 并且不支持 Web UI，只能通过客户端工具配置。 <a href="#fnref6" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn7">
+<p>一些元件资料，网件：<a href="http://www.fpe.com.cn/pdf/100Base-t/8.49-53.pdf" target="_blank" rel="noopener">FPE H40520MN</a>、<a href="https://www.bothhandusa.com/datasheets/filter-transformer/10-100-dual-dip/20PT10xx-LF-Series.pdf" target="_blank" rel="noopener">Bothhand 20PT1024X</a>/U&amp;T UTH40C01、<a href="https://www.winbond.com/hq/product/code-storage-flash-memory/serial-nor-flash/?__locale=en&amp;partNo=W25Q16JV" target="_blank" rel="noopener">winbond W25Q16JV</a> 水星：<a href="http://www.group-tek.com/uploads/201705/590a906f0ff58.pdf" target="_blank" rel="noopener">HST-2027DAR</a>、cFeon QH16B-104HIP、<a href="https://www.realtek.com/Product/Index?id=3699" target="_blank" rel="noopener">Realtek RTL8367S</a> <a href="#fnref7" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn8">
+<p>线缆测试原理应该是 TDR (time-domain reflectometer) 类似回声测距，对端开路的情况下才会收到反射，不知道水星如何实现非开路测距的，这个领域不太熟。 <a href="#fnref8" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn9">
+<p>在同类管理后台更高端型号 <a href="https://service.mercurycom.com.cn/content/pdf/201807/SG124D%20Pro%20V1.0%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C%201.0.1.pdf" target="_blank" rel="noopener">SG124D Pro 的手册</a> 里有发现「阻抗：网线质量问题」的说明，因此这里也有可能是水星没有检测出阻抗问题。 <a href="#fnref9" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn10">
+<p>帮助里的定义：Mismatch: There is a mismatch with the cable impedance. Replace the Ethernet cable, and then try again. 除此以外网件还支持：Crosstalk: There is an interpair short on the cable. <a href="#fnref10" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+
+<footer class="site-footer h-card"></footer>
+  </div>
+<a class="u-url" href="/zh/home-switches-comparison" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" value="/"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            
+            <a href="https://tevinzhang.com/zh/feed.xml">
+              <svg class="svg-icon orange">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg><span>订阅（仅中文）</span>
+            </a>
+          </p>
+          <ul class="contact-list">
+            <li class="p-name">Tevin Zhang</li>
+            <li><a class="u-email" href="mailto:hey(at)tevinzhang(dot)com">hey(at)tevinzhang(dot)com</a></li>
+              <li><a href="/pgp.asc" rel="pgpkey authn">PGP Key</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p><a class="page-link" href="/en" title="English Only">English</a><span> | </span><span>中文</span></p>
+<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://tevinzhang.com">张天文</a> © 2024 — CC BY-NC-SA 4.0<p></p>
+        </div>
+      </div>
+  
+      <div class="social-links">
+<ul class="social-media-list">
+<li>
+  <a rel="me noopener" href="https://t.me/tevino" target="_blank" title="Personal Telegram">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#telegram"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Things I made as a programmer publicly">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Books and movies I ever read and watched">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#douban"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://mastodon.tevinzhang.com/@tevin" target="_blank" title="The fediverse">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#mastodon"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+</div>
+  
+    </div>
+  
+  </footer>
+</body>
+
+</html>

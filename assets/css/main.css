@@ -1,0 +1,50 @@
+details summary {
+  cursor: pointer;
+  user-select: none;
+}
+details summary h2,
+details summary h3,
+details summary h4,
+details summary h5 {
+  display: inline-block;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .movie-content {
+    flex-direction: column !important;
+  }
+  .comments {
+    padding-top: 2em;
+    padding-left: 0 !important;
+  }
+}
+.movie-content {
+  display: flex;
+  flex-direction: row;
+}
+.movie-content .cover {
+  flex: 1;
+}
+.movie-content .comments {
+  flex: 1;
+  padding-left: 2em;
+}
+
+.list-box {
+  width: 12em;
+  display: inline-block;
+  margin: 1em;
+}
+
+form input[type=text], form input[type=email] {
+  padding: 0.5em;
+  width: 15em;
+}
+form input[type=submit] {
+  padding: 0.5em;
+  width: 8em;
+  font-size: 1em;
+}
+
+/*# sourceMappingURL=main.css.map */

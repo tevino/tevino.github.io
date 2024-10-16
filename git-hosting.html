@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Private git hosting on OpenBSD | Tevin Zhang</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="Private git hosting on OpenBSD" />
+<meta name="author" content="Tevin Zhang" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="2023-12-11: Added an alternative way to clone" />
+<meta property="og:description" content="2023-12-11: Added an alternative way to clone" />
+<link rel="canonical" href="https://tevinzhang.com/git-hosting" />
+<meta property="og:url" content="https://tevinzhang.com/git-hosting" />
+<meta property="og:site_name" content="Tevin Zhang" />
+<meta property="og:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-10-05T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="twitter:title" content="Private git hosting on OpenBSD" />
+<meta name="twitter:site" content="@tevin_zhang" />
+<meta name="twitter:creator" content="@tevin_zhang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tevin Zhang"},"dateModified":"2023-12-11T21:30:04+08:00","datePublished":"2023-10-05T00:00:00+08:00","description":"2023-12-11: Added an alternative way to clone","headline":"Private git hosting on OpenBSD","image":"https://tevinzhang.com/assets/avatar.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://tevinzhang.com/git-hosting"},"url":"https://tevinzhang.com/git-hosting"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://tevinzhang.com/feed.xml" title="Tevin Zhang" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#686868">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<meta name=”robots” content=”noai, noimageai”>
+
+
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "htf4lzs4f1");
+</script>
+
+
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.tevinzhang.com"]);
+  _paq.push(["setDomains", ["*.tevinzhang.com","*.tevino.github.io"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//a.tevinzhang.com/m/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//a.tevinzhang.com/m/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+
+</head><body><header class="site-header">
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/">Tevin Zhang</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger">
+            <label for="nav-trigger">
+                <span class="menu-icon">
+                    <svg viewbox="0 0 18 15" width="18px" height="15px">
+                        <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+                    </svg>
+                </span>
+            </label>
+
+            <div class="trigger">
+<a class="page-link" href="/projects">Projects</a><a class="page-link" href="/now/">Now</a><a class="page-link" href="/about">About</a><a class="page-link" href="/en/blog">Blog</a><a class="page-link" href="/curated-corner">Curated Corner</a>
+</div>
+        </nav>
+</div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Private git hosting on OpenBSD</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2023-10-05T00:00:00+08:00" itemprop="datePublished">
+        2023-10-05
+      </time></p>
+
+
+<p class="post-meta">
+
+  <span>EN</span>
+
+  <span> | </span>
+      <a class="page-link" href="/zh/git-hosting" title="ZH">
+        ZH
+      </a>
+</p>
+</header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul>
+<li>2023-12-11: Added an alternative way to clone</li>
+</ul>
+<p>For years, I have hosted my personal git repositories on a self-hosted Gogs server. While some minor gliches have persisted for some time, I lived with them until recently. After yet another 500 error during a <code>push</code>, I finally decided it was time to migrate to a more reliable platform.</p>
+<p>I decided to try Gitea, which I hoped could bring some stability and the code search feature that I had longed desired.</p>
+<p>Although I didn’t use features like issues and merge requests, Migration is not easy, I managed to migrate most of my repositories with a modified version of <a href="https://github.com/Martchus/gogs2gitea/blob/3660f9dfc6fda004889be3c8ec819c2d23fa761e/gogs2gitea" target="_blank" rel="noopener">a migration script in Perl</a>. Other repositories had to be migrated in very manual ways due to various errors from Gitea during the migration.</p>
+<p>When I finally migrated all of them I found that some repositories on Gitea were empty while their originals on Gogs were not, These repositories were in the first migration batch that Gitea claimed had succeeded, I figured out the issues and successfully migrated those empty repositories.</p>
+<p>At this point, my migration was fully completed, Gitea was working with all my previous repositories. However the false positives<sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup> that Gitea gave to me were unacceptable, which could have cost me data loss if I had believed them, for git forges, data integrity always comes first.</p>
+<p>Finally, I destroied the Gitea instance that I had just migrated to, and migrated all the repositoried to an raw OpenBSD server via SSH, it’s simple, effective and rock solid, here’s how.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Enable <code>sshd(8)</code><sup class="footnote-ref"><a href="#fn2" id="fnref2">2</a></sup>
+</li>
+<li>Install <code>git</code> (<code>pkg_add git</code>)</li>
+<li>Setup <code>doas(1)</code> (check <code>doas.conf(5)</code>) or modify the commands to not use it</li>
+</ul>
+<h2 id="setup-the-server">Setup the server</h2>
+<h3 id="create-git-user">Create git user</h3>
+<p>Even if you are the only one who access the repositories, a separate user provides more security and isolation, which is usually desired.</p>
+<pre><code># mkdir -p /home/git
+# user add git
+# chown -R git:git /home/git
+</code></pre>
+<h3 id="restrict-the-user">Restrict the user</h3>
+<p><code>git-shell(1)</code> comes with <code>git(1)</code>, is a restricted login shell for git-only SSH access.</p>
+<p>Make this the default shell of the git user:</p>
+<pre><code># chsh git -s $(which git-shell)
+</code></pre>
+<p>Append the following to <code>/etc/ssh/sshd_config</code> to restrict certain SSH capabilities for the <strong>git</strong> user, ensuring that it cannot do potentially risky actions via SSH.</p>
+<pre><code>Match User git
+	AllowAgentForwarding no
+	AllowTcpForwarding no
+	X11Forwarding no
+	PermitTTY no
+</code></pre>
+<h3 id="create-a-repository">Create a repository</h3>
+<pre><code>doas -u git git init --bare /home/git/test.git
+</code></pre>
+<p>This initialize git config values so maintenance tasks will be scheduled for this repository.</p>
+<pre><code>doas -u git GIT_DIR=/home/git/test.git git maintanence register
+</code></pre>
+<p>The result is in <code>/home/git/.gitconfig</code>:</p>
+<pre><code>[maintenance]
+	repo = /home/git/test.git
+</code></pre>
+<h3 id="start-maintenance-tasks">Start maintenance tasks</h3>
+<p>Run this once so the periodical maintanence tasks could be installed as cronjobs</p>
+<pre><code># doas -u git GIT_DIR=/home/git/test.git git maintanence start
+</code></pre>
+<p>Check the tasks with:</p>
+<pre><code># doas -u git crontab -l
+</code></pre>
+<p>They will look like this:</p>
+<pre><code># BEGIN GIT MAINTENANCE SCHEDULE
+# The following schedule was created by Git
+# Any edits made in this region might be
+# replaced in the future by a Git command.
+
+0 1-23 * * * "/usr/local/libexec/git/git" --exec-path="/usr/local/libexec/git" for-each-repo --config=maintenance.repo maintenance run --schedule=hourly
+0 0 * * 1-6 "/usr/local/libexec/git/git" --exec-path="/usr/local/libexec/git" for-each-repo --config=maintenance.repo maintenance run --schedule=daily
+0 0 * * 0 "/usr/local/libexec/git/git" --exec-path="/usr/local/libexec/git" for-each-repo --config=maintenance.repo maintenance run --schedule=weekly
+
+# END GIT MAINTENANCE SCHEDULE
+</code></pre>
+<h2 id="on-the-client-side">On the client side</h2>
+<p>Clone the repository</p>
+<pre><code># git clone git@your.domain:test.git
+</code></pre>
+<p>For a repository under <code>/home/git/folder/repo.git</code></p>
+<pre><code># git clone git@your.domain:folder/repo.git
+</code></pre>
+<p><strong>Note</strong>: This is a scp-like syntax, so no <code>ssh://</code>.</p>
+<p>or</p>
+<pre><code># git clone ssh://git@your.domain:/~/folder/repo.git
+</code></pre>
+<p>You know the rest</p>
+<h2 id="going-futher">Going futher</h2>
+<ul>
+<li>Setup backup for <code>/home/git</code> if you haven’t already</li>
+<li>Create custom scripts<sup class="footnote-ref"><a href="#fn3" id="fnref3">3</a></sup> under <code>/home/git/git-shell-commands</code> for common tasks like repository CRUD</li>
+<li>Setup <code>git-daemon(1)</code> if you need public access, or <code>gitweb(1)</code>, <a href="https://git.zx2c4.com/cgit/" target="_blank" rel="noopener">cgit</a> for a web UI</li>
+</ul>
+<section class="footnotes">
+<ol>
+<li id="fn1">
+<p><a href="https://mastodon.tevinzhang.com/@tevin/111129696403308201" target="_blank" rel="noopener">https://mastodon.tevinzhang.com/@tevin/111129696403308201</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2">
+<p><a href="https://web.archive.org/web/20230601051850/https://phoenixnap.com/kb/git-ssh-vs-https" target="_blank" rel="noopener">Git official documentation had changed the recommended protocol multiple times, alternating between SSH and HTTPS</a>. To me SSH is easier to setup, more secure and performant. <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn3">
+<p>I currently have <code>help</code>, <code>add_key</code>, <code>ls</code>, <code>mkrepo</code>(with maintenance task registration) and <code>rm</code> (on top of <code>trash(1)</code>) <a href="#fnref3" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+
+<footer class="site-footer h-card"><table class="post-meta">
+        <tbody>
+<tr>
+                <th>OpenBSD</th>
+                <td>
+<p>v7.3</p>
+</td>
+            </tr>
+<tr>
+                <th>Gogs</th>
+                <td>
+<p>v0.13</p>
+</td>
+            </tr>
+<tr>
+                <th>Gitea</th>
+                <td>
+<p>v1.18.5</p>
+</td>
+            </tr>
+<tr>
+                <th>Git</th>
+                <td>
+<p>v2.40.0</p>
+</td>
+            </tr>
+</tbody>
+    </table></footer>
+  </div>
+<a class="u-url" href="/git-hosting" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" value="/"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            
+            <a href="https://tevinzhang.com/en/feed.xml">
+              <svg class="svg-icon orange">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg><span>Subscribe (English Only)</span>
+            </a>
+          </p>
+          <ul class="contact-list">
+            <li class="p-name">Tevin Zhang</li>
+            <li><a class="u-email" href="mailto:hey(at)tevinzhang(dot)com">hey(at)tevinzhang(dot)com</a></li>
+              <li><a href="/pgp.asc" rel="pgpkey authn">PGP Key</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p><span>English</span><span> | </span><a class="page-link" href="/zh" title="仅中文">中文</a></p>
+<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://tevinzhang.com">Tevin Zhang</a> © 2024 — CC BY-NC-SA 4.0<p></p>
+        </div>
+      </div>
+  
+      <div class="social-links">
+<ul class="social-media-list">
+<li>
+  <a rel="me noopener" href="https://t.me/tevino" target="_blank" title="Personal Telegram">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#telegram"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Things I made as a programmer publicly">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Books and movies I ever read and watched">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#douban"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://mastodon.tevinzhang.com/@tevin" target="_blank" title="The fediverse">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#mastodon"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+</div>
+  
+    </div>
+  
+  </footer>
+</body>
+
+</html>

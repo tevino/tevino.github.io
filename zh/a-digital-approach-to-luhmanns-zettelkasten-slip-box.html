@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>数字化卢曼的卡片盒系统（Zettelkasten） | Tevin Zhang</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="数字化卢曼的卡片盒系统（Zettelkasten）" />
+<meta name="author" content="Tevin Zhang" />
+<meta property="og:locale" content="zh" />
+<meta name="description" content="本文是卡片盒系统手册的一部分。 本文假设读者已经了解卢曼的卡片盒系统（Zettelkasten），如果不了解，请先阅读这篇介绍。 以下是我对卢曼基于纸质的文件系统的数字化方法，希望能以更现代（也许更好）的方式实现。这种方法试图保留原始方法的优点，如提高生产力和积累知识，同时在以下三个层面进行了改变： 物理层面 逻辑层面 卡片层面" />
+<meta property="og:description" content="本文是卡片盒系统手册的一部分。 本文假设读者已经了解卢曼的卡片盒系统（Zettelkasten），如果不了解，请先阅读这篇介绍。 以下是我对卢曼基于纸质的文件系统的数字化方法，希望能以更现代（也许更好）的方式实现。这种方法试图保留原始方法的优点，如提高生产力和积累知识，同时在以下三个层面进行了改变： 物理层面 逻辑层面 卡片层面" />
+<link rel="canonical" href="https://tevinzhang.com/zh/a-digital-approach-to-luhmanns-zettelkasten-slip-box" />
+<meta property="og:url" content="https://tevinzhang.com/zh/a-digital-approach-to-luhmanns-zettelkasten-slip-box" />
+<meta property="og:site_name" content="Tevin Zhang" />
+<meta property="og:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-01-28T21:37:31+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="twitter:title" content="数字化卢曼的卡片盒系统（Zettelkasten）" />
+<meta name="twitter:site" content="@tevin_zhang" />
+<meta name="twitter:creator" content="@tevin_zhang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tevin Zhang"},"dateModified":"2024-09-11T16:36:44+08:00","datePublished":"2020-01-28T21:37:31+08:00","description":"本文是卡片盒系统手册的一部分。 本文假设读者已经了解卢曼的卡片盒系统（Zettelkasten），如果不了解，请先阅读这篇介绍。 以下是我对卢曼基于纸质的文件系统的数字化方法，希望能以更现代（也许更好）的方式实现。这种方法试图保留原始方法的优点，如提高生产力和积累知识，同时在以下三个层面进行了改变： 物理层面 逻辑层面 卡片层面","headline":"数字化卢曼的卡片盒系统（Zettelkasten）","image":"https://tevinzhang.com/assets/avatar.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://tevinzhang.com/zh/a-digital-approach-to-luhmanns-zettelkasten-slip-box"},"url":"https://tevinzhang.com/zh/a-digital-approach-to-luhmanns-zettelkasten-slip-box"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://tevinzhang.com/feed.xml" title="Tevin Zhang" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#686868">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<meta name=”robots” content=”noai, noimageai”>
+
+
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "htf4lzs4f1");
+</script>
+
+
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.tevinzhang.com"]);
+  _paq.push(["setDomains", ["*.tevinzhang.com","*.tevino.github.io"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//a.tevinzhang.com/m/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//a.tevinzhang.com/m/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+
+</head><body><header class="site-header">
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/zh">Tevin Zhang</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger">
+            <label for="nav-trigger">
+                <span class="menu-icon">
+                    <svg viewbox="0 0 18 15" width="18px" height="15px">
+                        <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+                    </svg>
+                </span>
+            </label>
+
+            <div class="trigger">
+<a class="page-link" href="/zh/projects">项目</a><a class="page-link" href="/zh/now/">近况</a><a class="page-link" href="/zh/about">关于</a><a class="page-link" href="/zh/blog">博客</a><a class="page-link" href="/zh/movies">电影</a><a class="page-link" href="/zh/curated-corner">精选</a>
+</div>
+        </nav>
+</div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">数字化卢曼的卡片盒系统（Zettelkasten）</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2020-01-28T21:37:31+08:00" itemprop="datePublished">
+        2020-01-28
+      </time>~<time class="dt-modified" datetime="2024-09-11T00:00:00+08:00" itemprop="dateModified">
+          2024-09-11
+        </time></p>
+
+
+<p class="post-meta">
+
+  
+      <a class="page-link" href="/a-digital-approach-to-luhmanns-zettelkasten-slip-box" title="EN">
+        EN
+      </a>
+
+  <span> | </span><span>ZH</span>
+| <strong>📌 本文由机器翻译</strong></p>
+</header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><strong>本文是<a href="https://thezettelkasten.com" target="_blank" rel="noopener">卡片盒系统手册</a>的一部分</strong>。</p>
+<hr>
+<p>本文假设读者已经了解卢曼的卡片盒系统（Zettelkasten），如果不了解，请先阅读<a href="/luhmanns-zettelkasten-slip-box">这篇介绍</a>。</p>
+<p>以下是我对卢曼基于纸质的文件系统的数字化方法，希望能以更现代（也许更好）的方式实现。这种方法试图保留原始方法的优点，如提高生产力和积累知识，同时在以下三个层面进行了改变：</p>
+<ul>
+<li>物理层面</li>
+<li>逻辑层面</li>
+<li>卡片层面</li>
+</ul>
+<!--more-->
+<p>建议在阅读以下内容之前先了解卢曼的卡片盒系统。</p>
+<h3 id="section">物理层面</h3>
+<table>
+<thead>
+<tr>
+<th align="left">纸质</th>
+<th align="left">数字化</th>
+<th align="left">目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">手写纸质卡片</td>
+<td align="left">纯文本文件</td>
+<td align="left">持久保存</td>
+</tr>
+<tr>
+<td align="left">木制盒子</td>
+<td align="left">包含上述文件的文件夹</td>
+<td align="left">持久保存，存储卡片并方便人类查找</td>
+</tr>
+</tbody>
+</table>
+<h4 id="section-1">为什么选择纯文本</h4>
+<p>纯文本文件可以在几十年后仍被各种应用程序读写，而许多其他格式的规范可能会发生很大变化，导致你用旧版本应用程序创建的珍贵文件无法被新版本打开，更糟糕的是，应用程序或格式可能会完全消失。</p>
+<h4 id="section-2">文件夹形式</h4>
+<p>文件夹可以是任何形式，只要能达到目的 - 存储卡片并方便人类查找。
+文件系统上的简单文件夹就可以，如果你像我一样使用DEVONthink<sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup>，其中的文件夹（不会在文件系统上形成单个文件夹）也可以。</p>
+<h3 id="section-3">逻辑层面</h3>
+<table>
+<thead>
+<tr>
+<th align="left">方面</th>
+<th align="left">纸质</th>
+<th align="left">数字化</th>
+<th align="left">目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">编号系统</td>
+<td align="left">卡片左上角，如 <code>1/1b2c</code>
+</td>
+<td align="left">纯文本文件的文件名和标题前缀，如 <code>1.0b2c.md</code>
+</td>
+<td align="left">为每个卡片提供唯一ID，便于人类视觉识别</td>
+</tr>
+<tr>
+<td align="left">卡片间的引用</td>
+<td align="left">在其他卡片上写下被引用卡片的ID</td>
+<td align="left">在其他卡片中使用Markdown链接引用被引用的卡片</td>
+<td align="left">保持卡片之间关系的关键</td>
+</tr>
+</tbody>
+</table>
+<h4 id="section-4">编号系统</h4>
+<p>与其他使用时间戳命名卡片的数字化方法<sup class="footnote-ref"><a href="#fn2" id="fnref2">2</a></sup> <sup class="footnote-ref"><a href="#fn3" id="fnref3">3</a></sup>不同，我选择保留卢曼的编号方式，原因有二：</p>
+<ol>
+<li>时间戳太长，不易记忆，因此无法起到视觉辅助的作用，而我认为这对手动建立链接至关重要。
+<ul>
+<li>然而，卡片的创建时间仍可以保存在文件中。</li>
+</ul>
+</li>
+<li>在按名称排序的文件夹中，卡片的序列层级一目了然
+<ul>
+<li>因此可以轻松在相邻的序列层级之间导航，这很可能与卢曼在纸质工作流程中将相近序列的卡片存放在一起的做法非常接近。</li>
+</ul>
+</li>
+</ol>
+<p>对卢曼方法有两个小改动：</p>
+<ol>
+<li>
+<strong>使用 <code>.</code> 代替 <code>/</code></strong>
+<ul>
+<li>大多数文件系统不允许在文件名中使用 <code>/</code> 字符</li>
+</ul>
+</li>
+<li>对每个顶级主题的第一个卡片使用 <code>1.0.md</code> 而不是 <code>1.md</code>
+<ul>
+<li>这样，按名称正常排序时，第一个卡片（<code>1.0.md</code>）会排在所有其他卡片（如 <code>1.1</code>、<code>1.2a</code>、<code>1.3b</code>）之前，而不是之后</li>
+</ul>
+</li>
+</ol>
+<h4 id="section-5">引用</h4>
+<p><strong>以下标记适用于DEVONthink<sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup>，对于不使用它的人，请确保你选择的应用程序（例如markdown编辑器）能够在文件之间跳转，并使用支持的标记创建引用。</strong></p>
+<p>引用应该以显式形式书写：</p>
+<pre><code>这是一个指向一张卡片的链接 [[1.0]]
+
+这是一个指向一张一张卡片的链接 [1.0](1.0)
+</code></pre>
+<p>以下隐式形式无法为卡片的ID提供视觉辅助：</p>
+<pre><code>这个链接没有显示被引用卡片的ID [卡片](1.0)
+</code></pre>
+<h3 id="section-6">卡片层面</h3>
+<p>一张卡片是一个简单的 Markdown 文件, 以下是文件 <code>1.0.md</code> 的例子:</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">Date</span><span class="pi">:</span> <span class="s">2019-12-31 11:07:38</span>
+<span class="nn">---</span>
+
+<span class="gh"># 1.0 这是卡片的标题</span>
+
+此处是卡片内容.
+
+这是一个引用另一张卡片的例子 [[1.10a]]
+
+这是一个引用文献的例子 [^1]<span class="sb">
+
+
+</span><span class="p">---
+</span>
+<span class="p">[</span><span class="ss">^1</span><span class="p">]:</span> <span class="sx">这里是参考文献</span>
+</code></pre></div></div>
+<p>除了普通的卡片外，卢曼的卡片盒中还有三种特殊类型的卡片。</p>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">纸质</th>
+<th align="left">数字化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">目录</td>
+<td align="left">一张卡片包含对顶级主题的引用列表</td>
+<td align="left">一个文件包含指向顶级卡片的链接</td>
+</tr>
+<tr>
+<td align="left">索引</td>
+<td align="left">一张卡片包含主要主题及相关卡片的引用</td>
+<td align="left">一个文件包含不同主题与相关卡片的链接</td>
+</tr>
+<tr>
+<td align="left">参考文献</td>
+<td align="left">一张卡片按字母顺序排列包含文献的书目信息</td>
+<td align="left">书目信息嵌入每个文件的底部</td>
+</tr>
+</tbody>
+</table>
+<h4 id="section-7">自动生成</h4>
+<p>通过扫描整个卡片盒文件夹可以自动生成<code>目录</code>，但索引则需要手动创建。</p>
+<h4 id="section-8">参考文献</h4>
+<p>对于人类来说，在纸上多次书写书目信息相当繁琐，但在数字世界中，借助Zotero等应用程序，这就不是问题了。</p>
+<p>通过将书目信息嵌入每张卡片中，卡片变得更加自包含。</p>
+<h2 id="section-9">要点</h2>
+<ul>
+<li>卡片之间的<strong>选择性</strong>链接使得检索时能够获得比最初记笔记时预期更多的内容 <sup class="footnote-ref"><a href="#fn4" id="fnref4">4</a></sup>
+<ul>
+<li>这就是为什么卡片盒能够与人”交流”，因为：
+<ol>
+<li>交流的一个基本前提是伙伴之间能够相互带来惊喜 <sup class="footnote-ref"><a href="#fn5" id="fnref5">5</a></sup>
+</li>
+<li>我们已经被教育要期望从我们的活动中得到有用的东西 <sup class="footnote-ref"><a href="#fn6" id="fnref6">6</a></sup>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<strong>没有写作，就没有复杂的思考</strong>，因为人脑的短期和长期记忆都是有限的 <sup class="footnote-ref"><a href="#fn5" id="fnref5">5</a></sup>
+</li>
+<li>这个系统不仅反映了已验证的知识，还反映了<strong>思考过程（通过链接）</strong>，包括后来被修正的潜在错误和死胡同，这些并<strong>没有</strong>从文件中删除，而是在需要时可能会添加一张带有修订的新卡片 <sup class="footnote-ref"><a href="#fn4" id="fnref4">4</a></sup>
+</li>
+</ul>
+<p>要更深入地了解Zettelkasten，请查看<a href="https://thezettelkasten.com" target="_blank" rel="noopener">Zettelkasten手册</a>。</p>
+<hr>
+<section class="footnotes">
+<ol>
+<li id="fn1">
+<p>DEVONthink. DEVONtechnologies, LLC, <a href="https://www.devontechnologies.com/apps/devonthink" target="_blank" rel="noopener">https://www.devontechnologies.com/apps/devonthink</a>. <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2">
+<p>Schallner, Rene. Renerocksai/Sublime_zk. 2017. 2019. GitHub, <a href="https://github.com/renerocksai/sublime_zk" target="_blank" rel="noopener">https://github.com/renerocksai/sublime_zk</a>. <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn3">
+<p>Tietze, Christian. The Archive (MacOS) • Zettelkasten Method. <a href="https://zettelkasten.de/the-archive/" target="_blank" rel="noopener">https://zettelkasten.de/the-archive/</a>. Accessed 31 Dec. 2019. <a href="#fnref3" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn4">
+<p>Schmidt, Johannes F. K. “Niklas Luhmann’s Card Index: The Fabrication of Serendipity.” Sociologica, vol. Vol 12, July 2018, pp. 53-60 Pages. DOI.org (Datacite), doi:10.6092/ISSN.1971-8853/8350. <a href="#fnref4" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn5">
+<p>Niklas, Luhmann. Communicating with Slip Boxes by Niklas Luhmann. <a href="http://luhmann.surge.sh/communicating-with-slip-boxes" target="_blank" rel="noopener">http://luhmann.surge.sh/communicating-with-slip-boxes</a>. Accessed 27 Dec. 2019. <a href="#fnref5" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn6">
+<p>Luhmann, Niklas. Learning How to Read by Niklas Luhmann. <a href="http://luhmann.surge.sh/learning-how-to-read" target="_blank" rel="noopener">http://luhmann.surge.sh/learning-how-to-read</a>. Accessed 27 Dec. 2019. <a href="#fnref6" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+  </div>
+<a class="u-url" href="/zh/a-digital-approach-to-luhmanns-zettelkasten-slip-box" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" value="/"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            
+            <a href="https://tevinzhang.com/zh/feed.xml">
+              <svg class="svg-icon orange">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg><span>订阅（仅中文）</span>
+            </a>
+          </p>
+          <ul class="contact-list">
+            <li class="p-name">Tevin Zhang</li>
+            <li><a class="u-email" href="mailto:hey(at)tevinzhang(dot)com">hey(at)tevinzhang(dot)com</a></li>
+              <li><a href="/pgp.asc" rel="pgpkey authn">PGP Key</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p><a class="page-link" href="/en" title="English Only">English</a><span> | </span><span>中文</span></p>
+<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://tevinzhang.com">张天文</a> © 2024 — CC BY-NC-SA 4.0<p></p>
+        </div>
+      </div>
+  
+      <div class="social-links">
+<ul class="social-media-list">
+<li>
+  <a rel="me noopener" href="https://t.me/tevino" target="_blank" title="Personal Telegram">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#telegram"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Things I made as a programmer publicly">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Books and movies I ever read and watched">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#douban"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://mastodon.tevinzhang.com/@tevin" target="_blank" title="The fediverse">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#mastodon"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+</div>
+  
+    </div>
+  
+  </footer>
+</body>
+
+</html>

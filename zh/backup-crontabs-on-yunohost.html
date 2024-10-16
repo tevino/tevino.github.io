@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>在 Yunohost 上备份 crontabs | Tevin Zhang</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="在 Yunohost 上备份 crontabs" />
+<meta name="author" content="Tevin Zhang" />
+<meta property="og:locale" content="zh" />
+<meta name="description" content="YunoHost通常已经知道需要备份什么。但是，如果您进行了手动更改，例如在YunoHost应用程序系统之外安装了应用程序，您可能希望扩展YunoHost的机制以指定其他要备份的文件。" />
+<meta property="og:description" content="YunoHost通常已经知道需要备份什么。但是，如果您进行了手动更改，例如在YunoHost应用程序系统之外安装了应用程序，您可能希望扩展YunoHost的机制以指定其他要备份的文件。" />
+<link rel="canonical" href="https://tevinzhang.com/zh/backup-crontabs-on-yunohost" />
+<meta property="og:url" content="https://tevinzhang.com/zh/backup-crontabs-on-yunohost" />
+<meta property="og:site_name" content="Tevin Zhang" />
+<meta property="og:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-09-16T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="twitter:title" content="在 Yunohost 上备份 crontabs" />
+<meta name="twitter:site" content="@tevin_zhang" />
+<meta name="twitter:creator" content="@tevin_zhang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tevin Zhang"},"dateModified":"2023-09-16T19:38:36+08:00","datePublished":"2023-09-16T00:00:00+08:00","description":"YunoHost通常已经知道需要备份什么。但是，如果您进行了手动更改，例如在YunoHost应用程序系统之外安装了应用程序，您可能希望扩展YunoHost的机制以指定其他要备份的文件。","headline":"在 Yunohost 上备份 crontabs","image":"https://tevinzhang.com/assets/avatar.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://tevinzhang.com/zh/backup-crontabs-on-yunohost"},"url":"https://tevinzhang.com/zh/backup-crontabs-on-yunohost"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://tevinzhang.com/feed.xml" title="Tevin Zhang" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#686868">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<meta name=”robots” content=”noai, noimageai”>
+
+
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "htf4lzs4f1");
+</script>
+
+
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.tevinzhang.com"]);
+  _paq.push(["setDomains", ["*.tevinzhang.com","*.tevino.github.io"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//a.tevinzhang.com/m/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//a.tevinzhang.com/m/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+
+</head><body><header class="site-header">
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/zh">Tevin Zhang</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger">
+            <label for="nav-trigger">
+                <span class="menu-icon">
+                    <svg viewbox="0 0 18 15" width="18px" height="15px">
+                        <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+                    </svg>
+                </span>
+            </label>
+
+            <div class="trigger">
+<a class="page-link" href="/zh/projects">项目</a><a class="page-link" href="/zh/now/">近况</a><a class="page-link" href="/zh/about">关于</a><a class="page-link" href="/zh/blog">博客</a><a class="page-link" href="/zh/movies">电影</a><a class="page-link" href="/zh/curated-corner">精选</a>
+</div>
+        </nav>
+</div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">在 Yunohost 上备份 crontabs</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2023-09-16T00:00:00+08:00" itemprop="datePublished">
+        2023-09-16
+      </time></p>
+
+
+<p class="post-meta">
+
+  
+      <a class="page-link" href="/backup-crontabs-on-yunohost" title="EN">
+        EN
+      </a>
+
+  <span> | </span><span>ZH</span>
+| <strong>📌 本文由机器翻译</strong></p>
+</header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <blockquote>
+<p>YunoHost通常已经知道需要备份什么。但是，如果您进行了手动更改，例如在YunoHost应用程序系统之外安装了应用程序，您可能希望扩展YunoHost的机制以指定其他要备份的文件。</p>
+</blockquote>
+<p>我使用borg作为备份方法，并在检查归档（以 <code>_auto_conf</code> 和 <code>_auto_data</code> 为前缀）后发现crontab文件未包含在内。</p>
+<p>阅读<a href="https://web.archive.org/web/20230629205306/https://yunohost.org/en/backup/include_exclude_files" target="_blank" rel="noopener">官方文档</a>后，我成功备份了它们。</p>
+<h2 id="section">步骤</h2>
+<p>只需两个钩子文件，这对于除borg以外的备份方法也适用。</p>
+<p>备份中将包括：</p>
+<ul>
+<li>
+<code>/var/spool/cron/crontabs</code> 所有用户的 <code>crontab -l</code>
+</li>
+<li>两个钩子文件</li>
+</ul>
+<p>注意：</p>
+<ol>
+<li>所有操作均以 <strong>root</strong> 用户执行。</li>
+<li>如果更改钩子文件的名称，请相应调整文件内容。</li>
+</ol>
+<h3 id="section-1">创建钩子文件夹</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /etc/yunohost/hooks.d/<span class="o">{</span>backup,restore<span class="o">}</span>
+</code></pre></div></div>
+<h3 id="section-2">创建备份钩子</h3>
+<p><code>/etc/yunohost/hooks.d/backup/99-conf_custom</code></p>
+<details><summary>内容</summary>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="c"># 引入YNH助手</span>
+<span class="nb">source</span> /usr/share/yunohost/helpers
+
+ynh_restore_dest <span class="o">(){</span>
+    <span class="nv">YNH_CWD</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">YNH_BACKUP_DIR</span><span class="p">%/</span><span class="k">}</span><span class="s2">/</span><span class="nv">$1</span><span class="s2">"</span>
+    <span class="nb">cd</span> <span class="s2">"</span><span class="nv">$YNH_CWD</span><span class="s2">"</span>
+<span class="o">}</span>
+
+
+<span class="c"># 在子命令错误或未设置变量时退出钩子</span>
+ynh_abort_if_errors
+
+<span class="c"># Crontabs</span>
+ynh_restore_dest <span class="s2">"conf/custom/crontabs"</span>
+ynh_restore_file <span class="s2">"/var/spool/cron/crontabs"</span>
+
+<span class="c"># 其他（包括此文件）</span>
+ynh_restore_dest <span class="s2">"conf/custom/misc"</span>
+ynh_restore_file <span class="s2">"/etc/yunohost/hooks.d/backup/99-conf_custom"</span>
+ynh_restore_file <span class="s2">"/etc/yunohost/hooks.d/restore/99-conf_custom"</span>
+</code></pre></div></div>
+</details>
+<h3 id="section-3">创建还原钩子</h3>
+<p><code>/etc/yunohost/hooks.d/restore/99-conf_custom</code></p>
+<details><summary>内容</summary>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="c"># 引入YNH助手</span>
+<span class="nb">source</span> /usr/share/yunohost/helpers
+
+ynh_backup_dest <span class="o">(){</span>
+    <span class="nv">YNH_CWD</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">YNH_BACKUP_DIR</span><span class="p">%/</span><span class="k">}</span><span class="s2">/</span><span class="nv">$1</span><span class="s2">"</span>
+    <span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$YNH_CWD</span>
+    <span class="nb">cd</span> <span class="s2">"</span><span class="nv">$YNH_CWD</span><span class="s2">"</span>
+<span class="o">}</span>
+
+<span class="c"># 在子命令错误或未设置变量时退出钩子</span>
+ynh_abort_if_errors
+
+<span class="c"># Crontabs</span>
+ynh_backup_dest <span class="s2">"conf/custom/crontabs"</span>
+ynh_backup <span class="s2">"/var/spool/cron/crontabs"</span>
+
+<span class="c"># 其他（包括此文件）</span>
+ynh_backup_dest <span class="s2">"conf/custom/misc"</span>
+ynh_backup <span class="s2">"/etc/yunohost/hooks.d/backup/99-conf_custom"</span>
+ynh_backup <span class="s2">"/etc/yunohost/hooks.d/restore/99-conf_custom"</span>
+</code></pre></div></div>
+</details>
+<h3 id="section-4">分配适当的文件权限</h3>
+<p>这可能是不必要的，但我为了安全起见执行了这些操作。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod </span>740 /etc/yunohost/hooks.d/<span class="o">{</span>backup,restore<span class="o">}</span>/99-conf_custom
+</code></pre></div></div>
+<h3 id="section-5">启动备份以查看钩子是否有效</h3>
+<p>对于 borg 来说，启动备份只需要简单执行 <code>systemctl start borg</code></p>
+<p>这些文件将包含在 <code>_auto_conf</code> 前缀的归档中，这将列出 <code>ARCHIVE_NAME</code> 中的文件：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">app</span><span class="o">=</span>borg<span class="p">;</span> <span class="nv">BORG_PASSPHRASE</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span>yunohost app setting <span class="nv">$app</span> passphrase<span class="si">)</span><span class="s2">"</span> <span class="nv">BORG_RSH</span><span class="o">=</span><span class="s2">"ssh -i /root/.ssh/id_</span><span class="k">${</span><span class="nv">app</span><span class="k">}</span><span class="s2">_CHANGE_THIS -oStrictHostKeyChecking=yes "</span> borg list <span class="s2">"</span><span class="si">$(</span>yunohost app setting <span class="nv">$app</span> repository<span class="si">)</span><span class="s2">::ARCHIVE_NAME | grep crontabs"</span>
+</code></pre></div></div>
+
+
+<footer class="site-footer h-card"><table class="post-meta">
+        <tbody>
+<tr>
+                <th>YunoHost</th>
+                <td>
+<p>一个旨在实现服务器简单管理的操作系统，旨在民主化自托管，同时确保其可靠、安全、道德和轻量。</p>
+<p><a href="https://yunohost.org/en/whatsyunohost" target="_blank" rel="noopener">https://yunohost.org/en/whatsyunohost</a></p>
+</td>
+            </tr>
+<tr>
+                <th>borg</th>
+                <td>
+<p>具有压缩和加密功能的去重归档工具</p>
+<p><a href="https://www.borgbackup.org" target="_blank" rel="noopener">https://www.borgbackup.org</a></p>
+<p>与同名的YunoHost应用程序一起，提供了一种自动化备份方法，可扩展YunoHost。</p>
+<p>这也是“YunoHost中将成为默认备份方法的未来”。</p>
+</td>
+            </tr>
+</tbody>
+    </table></footer>
+  </div>
+<a class="u-url" href="/zh/backup-crontabs-on-yunohost" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" value="/"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            
+            <a href="https://tevinzhang.com/zh/feed.xml">
+              <svg class="svg-icon orange">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg><span>订阅（仅中文）</span>
+            </a>
+          </p>
+          <ul class="contact-list">
+            <li class="p-name">Tevin Zhang</li>
+            <li><a class="u-email" href="mailto:hey(at)tevinzhang(dot)com">hey(at)tevinzhang(dot)com</a></li>
+              <li><a href="/pgp.asc" rel="pgpkey authn">PGP Key</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p><a class="page-link" href="/en" title="English Only">English</a><span> | </span><span>中文</span></p>
+<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://tevinzhang.com">张天文</a> © 2024 — CC BY-NC-SA 4.0<p></p>
+        </div>
+      </div>
+  
+      <div class="social-links">
+<ul class="social-media-list">
+<li>
+  <a rel="me noopener" href="https://t.me/tevino" target="_blank" title="Personal Telegram">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#telegram"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Things I made as a programmer publicly">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Books and movies I ever read and watched">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#douban"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://mastodon.tevinzhang.com/@tevin" target="_blank" title="The fediverse">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#mastodon"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+</div>
+  
+    </div>
+  
+  </footer>
+</body>
+
+</html>

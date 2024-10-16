@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>联邦宇宙平台评估 | Tevin Zhang</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="联邦宇宙平台评估" />
+<meta name="author" content="Tevin Zhang" />
+<meta property="og:locale" content="zh" />
+<meta name="description" content="随着推特变成又一个抖音并加大了对内容的控制1 2,我开始使用联邦宇宙作为替代品。 推特会压制它们不喜欢的内容,例如提及竞争对手 Mastodon 时。 ↩ An Audacious Plan to Halt the Internet’s Enshittification - Cory Doctorow ↩" />
+<meta property="og:description" content="随着推特变成又一个抖音并加大了对内容的控制1 2,我开始使用联邦宇宙作为替代品。 推特会压制它们不喜欢的内容,例如提及竞争对手 Mastodon 时。 ↩ An Audacious Plan to Halt the Internet’s Enshittification - Cory Doctorow ↩" />
+<link rel="canonical" href="https://tevinzhang.com/zh/fediverse-evaluation" />
+<meta property="og:url" content="https://tevinzhang.com/zh/fediverse-evaluation" />
+<meta property="og:site_name" content="Tevin Zhang" />
+<meta property="og:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-09-11T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="twitter:title" content="联邦宇宙平台评估" />
+<meta name="twitter:site" content="@tevin_zhang" />
+<meta name="twitter:creator" content="@tevin_zhang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tevin Zhang"},"dateModified":"2024-09-25T21:48:10+08:00","datePublished":"2023-09-11T00:00:00+08:00","description":"随着推特变成又一个抖音并加大了对内容的控制1 2,我开始使用联邦宇宙作为替代品。 推特会压制它们不喜欢的内容,例如提及竞争对手 Mastodon 时。 ↩ An Audacious Plan to Halt the Internet’s Enshittification - Cory Doctorow ↩","headline":"联邦宇宙平台评估","image":"https://tevinzhang.com/assets/avatar.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://tevinzhang.com/zh/fediverse-evaluation"},"url":"https://tevinzhang.com/zh/fediverse-evaluation"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://tevinzhang.com/feed.xml" title="Tevin Zhang" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#686868">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<meta name=”robots” content=”noai, noimageai”>
+
+
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "htf4lzs4f1");
+</script>
+
+
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.tevinzhang.com"]);
+  _paq.push(["setDomains", ["*.tevinzhang.com","*.tevino.github.io"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//a.tevinzhang.com/m/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//a.tevinzhang.com/m/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+
+</head><body><header class="site-header">
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/zh">Tevin Zhang</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger" class="nav-trigger">
+            <label for="nav-trigger">
+                <span class="menu-icon">
+                    <svg viewbox="0 0 18 15" width="18px" height="15px">
+                        <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+                    </svg>
+                </span>
+            </label>
+
+            <div class="trigger">
+<a class="page-link" href="/zh/projects">项目</a><a class="page-link" href="/zh/now/">近况</a><a class="page-link" href="/zh/about">关于</a><a class="page-link" href="/zh/blog">博客</a><a class="page-link" href="/zh/movies">电影</a><a class="page-link" href="/zh/curated-corner">精选</a>
+</div>
+        </nav>
+</div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">联邦宇宙平台评估</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2023-09-11T00:00:00+08:00" itemprop="datePublished">
+        2023-09-11
+      </time></p>
+
+
+<p class="post-meta">
+
+  
+      <a class="page-link" href="/fediverse-evaluation" title="EN">
+        EN
+      </a>
+
+  <span> | </span><span>ZH</span>
+| <strong>📌 本文由机器翻译</strong></p>
+</header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>随着推特变成又一个抖音并加大了对内容的控制<sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup> <sup class="footnote-ref"><a href="#fn2" id="fnref2">2</a></sup>,我开始使用联邦宇宙作为替代品。</p>
+<p>现在是加入联邦宇宙的好时机,因为自我上次尝试以来,它已经成熟了。</p>
+<p>得益于马斯克 :) 联邦宇宙用户基数已超过 1200 万。</p>
+<p><a href="https://fediverse.observer/stats" target="_blank" rel="noopener"><img src="/assets/2023-10_fediverse_users.png" alt="联邦宇宙总用户数量" title="联邦宇宙总用户数量"></a>
+<a href="https://mastodon-analytics.com" target="_blank" rel="noopener"><img src="/assets/2023-10_mastodon_users.png" alt="Mastodon 总用户数量和活跃用户数量" title="Mastodon 总用户数量和活跃用户数量"></a></p>
+<p>然而,由于联邦宇宙的去中心化特性,加入它并不像加入推特那么简单。 有许多平台可供选择,类似于 Gmail 之类的电子邮件提供商。</p>
+<p>本文描述了我为自己选择平台的过程。</p>
+<h2 id="section">需求</h2>
+<p>就用户和平台(提供商)的关系而言,联邦宇宙目前的工作方式类似于电子邮件。</p>
+<p>如果一个平台宕机,你的账户也会消失。帐户迁移是通过 <a href="https://jvns.ca/blog/2023/08/11/some-notes-on-mastodon/" target="_blank" rel="noopener">重定向</a> 实现的,如果原始平台关闭,迁移是不可能的。</p>
+<p>最糟糕的是,除了 Calckey(下文详述)之外,几乎所有平台都不支持内容迁移。</p>
+<p>我们不得不面对现实——如果推特能失败,联邦宇宙服务器<sup class="footnote-ref"><a href="#fn3" id="fnref3">3</a></sup>也一样。自我托管可以让我完全控制自己的数据<sup class="footnote-ref"><a href="#fn4" id="fnref4">4</a></sup> <sup class="footnote-ref"><a href="#fn5" id="fnref5">5</a></sup>,减少我生活中的<a href="https://sive.rs/ti#why" target="_blank" rel="noopener">依赖</a>。</p>
+<p>凭借我的技术背景,我有能力进行自托管。 对于其他人来说,加入一个实例/服务器仍比留在大平台上好。</p>
+<p>有这么多实现可供选择,我的需求如下:</p>
+<ol>
+<li>内容迁出(而不是迁入)</li>
+<li>多语言发帖支持,这样我和关注者可以订阅某些语言</li>
+<li>跨平台关注人员</li>
+<li>发帖和编辑</li>
+<li>用 Unicode 搜索我和关注者的帖子</li>
+<li>通过标签搜索联合内容</li>
+<li>低资源占用以实现可持续发展<sup class="footnote-ref"><a href="#fn6" id="fnref6">6</a></sup>
+</li>
+</ol>
+<h2 id="section-1">评估</h2>
+<h3 id="gotosocial">GoToSocial</h3>
+<p>考虑到单人服务器的设计,无需外部服务——完美契合我的案例。</p>
+<p>鉴于轻量级的资源占用,它的运行很好。</p>
+<p>像 <a href="https://elk.zone" target="_blank" rel="noopener">elk</a> 这样的前端允许在发帖时选择语言,但这在服务器之间传播<a href="https://github.com/superseriousbusiness/gotosocial/issues/1277" target="_blank" rel="noopener">失败</a>,因此 Mastodon 实例无法识别语言首选项。</p>
+<p>缓慢的开发和长期存在的错误,比如多语言问题,让人担忧。</p>
+<p>非常有前途,但对我来说还不够成熟投入生产。</p>
+<h3 id="pleroma">Pleroma</h3>
+<p>与 GoToSocial 类似,考虑到单用户使用案例而设计,但更成熟、更受欢迎。
+鉴于提供的丰富功能,资源占用很轻。官方部署指南面向的是源代码和开发人员。
+我喜欢对 Gopher 的支持。</p>
+<p>我观察到一些帖子在其他实例的关注者时间线上丢失,即使他们直接访问我的个人资料。 丢失的帖子在我自己的时间线上确实存在且是公开的,并且在丢失帖子的前后都有可见的帖子。</p>
+<p>贡献者实现了多语言发帖支持,但被作者<a href="https://git.pleroma.social/pleroma/pleroma/-/merge_requests/3822" target="_blank" rel="noopener">拒绝合并</a>,因为担心复杂性:</p>
+<blockquote>
+<p>很抱歉,我本该早点说的,但我不认为合并这个是明智之举。 这是 2000 多行新的代码,涉及代码库的那么多方面,为一个看起来用处不大的功能。</p>
+<p>代码本身看起来不错,但由于复杂性原因,我寻思着最好不要把这个功能放入 pleroma 主线。</p>
+</blockquote>
+<p>看起来短期内不太可能被添加。</p>
+<h3 id="akko">Akko</h3>
+<p>一个带有翻译功能且快速开发的 Pleroma 分支。
+然而,单用户场景不再是首要任务。</p>
+<h3 id="calckeyfirefish">Calckey/Firefish</h3>
+<p>内容迁移吸引了我。</p>
+<p>我成功从 Mastodon 和 Pleroma 导入了备份(其他平台不支持),导入期间帖子标题遗失了但基本没问题。</p>
+<p>他们的旗舰实例最近经历了崩溃和与迁移相关的问题(来自公告):</p>
+<ul>
+<li>一个月前:服务器崩溃并修复</li>
+<li>一周前:一些用户的主页时间线由于迁移出现错误</li>
+</ul>
+<p>目前感觉非常实验性。</p>
+<h3 id="mastodon">Mastodon</h3>
+<p>这是我一开始就要避免的,因为它的资源占用非常激进。</p>
+<p>除此之外,它满足我的所有要求,具有出色的多语言支持——帖子可以用语言标签标记,这样观众可以通过标签订阅/过滤内容,从而只查看您说的语言。</p>
+<h2 id="section-2">决定</h2>
+<p>尽管资源占用大,但我最终选择了 Mastodon,因为它是唯一同时支持发帖和阅读多语言的平台。
+而且作为受支持程度最高的联邦宇宙平台,它最有可能获得未来的内容迁移功能。</p>
+<p>这对我来说还不够理想,所以如果未来有任何平台具备可观的多语言支持,我很乐意尝试。</p>
+<hr>
+<section class="footnotes">
+<ol>
+<li id="fn1">
+<p>推特会压制它们不喜欢的内容,例如提及竞争对手 Mastodon 时。 <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2">
+<p><a href="https://www.youtube.com/watch?v=q118B_QdP2k" target="_blank" rel="noopener">An Audacious Plan to Halt the Internet’s Enshittification - Cory Doctorow</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn3">
+<p>从另一个角度来看,联邦宇宙服务器规模较小,被收购和过载的可能性也更小,但我喜欢有所准备。 <a href="#fnref3" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn4">
+<p>这是我的一般偏好,这里有一篇<a href="/zh/data">相关文章</a>。 <a href="#fnref4" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn5">
+<p>我需要用到的旧推文中的链接已经失效,参见<a href="https://www.theverge.com/2023/8/20/23838823/twitter-x-deleted-pictures-links-2014-metadata-t-co-shortener" target="_blank" rel="noopener">这篇文章</a>。 <a href="#fnref5" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn6">
+<p>可以在 5 美元的 VPS 上运行。 <a href="#fnref6" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+
+<footer class="site-footer h-card"><table class="post-meta">
+        <tbody>
+<tr>
+                <th>Mastodon</th>
+                <td>
+<p>v4.2.0</p>
+</td>
+            </tr>
+<tr>
+                <th>GoToSocial</th>
+                <td>
+<p>v0.11.1 git-c7a46e0</p>
+</td>
+            </tr>
+<tr>
+                <th>Pleroma</th>
+                <td>
+<p>v2.5.5</p>
+</td>
+            </tr>
+<tr>
+                <th>Firefish</th>
+                <td>
+<p>v1.1.0-dev2</p>
+</td>
+            </tr>
+</tbody>
+    </table></footer>
+  </div>
+<a class="u-url" href="/zh/fediverse-evaluation" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+    <data class="u-url" value="/"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            
+            <a href="https://tevinzhang.com/zh/feed.xml">
+              <svg class="svg-icon orange">
+                <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+              </svg><span>订阅（仅中文）</span>
+            </a>
+          </p>
+          <ul class="contact-list">
+            <li class="p-name">Tevin Zhang</li>
+            <li><a class="u-email" href="mailto:hey(at)tevinzhang(dot)com">hey(at)tevinzhang(dot)com</a></li>
+              <li><a href="/pgp.asc" rel="pgpkey authn">PGP Key</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p><a class="page-link" href="/en" title="English Only">English</a><span> | </span><span>中文</span></p>
+<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://tevinzhang.com">张天文</a> © 2024 — CC BY-NC-SA 4.0<p></p>
+        </div>
+      </div>
+  
+      <div class="social-links">
+<ul class="social-media-list">
+<li>
+  <a rel="me noopener" href="https://t.me/tevino" target="_blank" title="Personal Telegram">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#telegram"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Things I made as a programmer publicly">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Books and movies I ever read and watched">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#douban"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me noopener" href="https://mastodon.tevinzhang.com/@tevin" target="_blank" title="The fediverse">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#mastodon"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+</div>
+  
+    </div>
+  
+  </footer>
+</body>
+
+</html>
