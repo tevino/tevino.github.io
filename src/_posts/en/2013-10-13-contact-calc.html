@@ -1,0 +1,91 @@
+---
+layout: lab-page
+category: lab
+title: Contact lens calculator
+description: A contact lens calculator that converts spectacle prescription (SRx) to contact lens spherical equivalent.
+lang: en
+date: 2013-10-13
+slug: contact-calc
+machine_translated: false
+meta:
+  - name: Contact Lenses
+    description: Disposable soft contact lenses, excluding non-disposable and rigid gas permeable contact lenses.
+---
+
+<div>
+    <span>Sphere:</span>
+    <select id="raw">
+        <option value="0">Please select</option>
+    </select>
+    <span>Cylinder:</span>
+    <select id="ast">
+        <option value="0">None</option>
+    </select>
+    <p><br />
+        <span id="result"></span>
+    </p>
+
+    <script type="text/javascript">
+        var rawEle = document.getElementById('raw');
+        var astEle = document.getElementById('ast');
+        var resultEle = document.getElementById('result');
+
+        var showResult = function () {
+            var raw = parseFloat(rawEle.value);
+            var ast = parseFloat(astEle.value);
+            var result;
+            var perfect = true;
+            if (raw == 0) {
+                resultEle.innerHTML = "";
+                return;
+            }
+
+            if (ast != 0) {
+                raw += ast / 2;
+                if (ast < -0.75 || ast < raw / 4) {
+                    perfect = false;
+                }
+            }
+            if (raw <= -4.00) {
+                result = raw / (1 - 0.012 * raw)
+            }
+            else {
+                result = raw;
+            }
+
+            var best = (parseInt(result / 0.25) * 0.25).toFixed(2);
+
+            msg = 'Contact Lens (Spherical Equivalent):<p>Standard (Preferred): <strong><code>' + best +
+                '</code></strong> Alternative: <code>' + (Number(best) + 0.25).toFixed(2) + '</code> or <code>' + (Number(best) - 0.25).toFixed(2) + '</code></p>';
+            if (!perfect) {
+                msg += "<blockquote><p>The prescription you selected <strong>in principle</strong> cannot be perfectly corrected with regular (non-toric) contact lenses.<br/>" +
+                    "However, due to the difficulty in purchasing toric lenses and various issues with comfort and stability when wearing them.<br/>" +
+                    "For situations where visual requirements are not too high, it's still recommended to try the above.</p></blockquote>";
+            }
+
+            resultEle.innerHTML = msg;
+        }
+
+        var fillOptions = function (ele, st, end) {
+            if (st == null) {
+                st = -0.25;
+            }
+            if (end == null) {
+                end = -11.50;
+            }
+            for (var i = st; i >= end; i -= 0.25) {
+                var opt = document.createElement('option');
+                opt.value = i;
+                opt.innerText = i.toFixed(2) + ' D';
+                ele.appendChild(opt);
+            }
+            ele.onchange = showResult;
+        }
+
+
+        fillOptions(astEle, -0.25, -3.00);
+        fillOptions(rawEle, -1.00);
+    </script>
+
+    <p>Related posts: <a href="{% post_url en/2013-11-01-choosing-contact-lenses %}">Choosing Contact Lenses</a>, <a href="{% post_url en/2013-10-13-trying-contact-lenses %}">Trying Contact Lenses</a></p>
+</div>

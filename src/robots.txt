@@ -1,0 +1,79 @@
+####################
+## AI Data Scrapers
+####################
+
+User-agent: AI2Bot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Cohere-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Kangaroo Bot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: PangguBot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: Webzio-Extended
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+####################
+## Archivers
+####################
+
+User-agent: archive.org_bot
+Disallow: /
+
+User-agent: Arquivo-web-crawler
+Disallow: /
+
+User-agent: heritrix
+Disallow: /
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: ia_archiver-web.archive.org
+Disallow: /
+
+User-agent: Nicecrawler
+Disallow: /

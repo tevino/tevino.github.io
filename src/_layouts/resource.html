@@ -1,0 +1,20 @@
+---
+layout: base
+---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    {%- include post-language-switch.html -%}
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content | replace: '<a href="http', '<a rel="nofollow noopener" target="_blank" href="http' }}
+  </div>
+
+  {%- if site.disqus.shortname -%}
+    {%- include comments.html -%}
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

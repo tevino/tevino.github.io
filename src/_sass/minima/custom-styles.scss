@@ -1,0 +1,329 @@
+// Custom color scheme -------------------------------------------------
+// Cream: #FFFBEA (backgrounds) | Blue: #0F64B5 (links & accents)
+// Overrides Minima's --minima-* CSS custom properties.
+:root {
+    --icon-size: 170px;
+
+    // Icon tile size on the /projects/ index grid (see .project-image below).
+    --project-card-icon-size: 120px;
+
+    // Brand tokens
+    --brand-cream: #FFFBEA;
+    --brand-blue:  #0F64B5;
+    --brand-ink:   #1a1a1a;
+
+    // Minima overrides (light mode)
+    // brand-color-dimmed drives post-meta/footer/social links in the new
+    // theme's nav & meta rework; keep the accent blue there.
+    --minima-brand-color:           var(--brand-blue);
+    --minima-brand-color-dimmed:    var(--brand-blue);
+    --minima-brand-color-light:     color-mix(in srgb, var(--brand-blue) 15%, var(--brand-cream));
+    --minima-brand-color-dark:      color-mix(in srgb, var(--brand-blue) 80%, black);
+    --minima-site-title-color:      var(--brand-blue);
+    --minima-heading-color:         var(--brand-ink);
+    --minima-text-color:            var(--brand-ink);
+    --minima-background-color:      var(--brand-cream);
+    --minima-code-background-color: color-mix(in srgb, var(--brand-blue) 3%, white);
+    --minima-link-base-color:       var(--brand-blue);
+    --minima-link-visited-color:    color-mix(in srgb, var(--brand-blue) 80%, gray);
+    --minima-link-hover-color:      color-mix(in srgb, var(--brand-blue) 75%, black);
+    --minima-border-color-01:       color-mix(in srgb, var(--brand-blue) 18%, var(--brand-cream));
+    --minima-border-color-02:       color-mix(in srgb, var(--brand-blue) 30%, var(--brand-cream));
+    --minima-border-color-03:       var(--brand-blue);
+    --minima-table-text-color:      var(--brand-ink);
+    --minima-table-zebra-color:     color-mix(in srgb, var(--brand-blue) 3%, white);
+    --minima-table-header-bg-color: color-mix(in srgb, var(--brand-blue) 6%, white);
+    --minima-table-header-border:   color-mix(in srgb, var(--brand-blue) 12%, white);
+    --minima-table-border-color:    color-mix(in srgb, var(--brand-blue) 15%, white);
+}
+
+// Dark mode overrides (so dark-mode readers also get the blue theme).
+// --brand-blue itself is redefined, so every rule using the token (image
+// borders/shadows included) adapts automatically; only the background and
+// text ink get their own dark tokens.
+@media (prefers-color-scheme: dark) {
+    :root {
+        --brand-blue:    #5BA4E6; // lightened accent for dark backgrounds
+        --brand-dark-bg: #1a1f24;
+        --brand-ink:     #d0d0d0;
+
+        // Minima overrides (dark mode)
+        --minima-brand-color:           var(--brand-blue);
+        --minima-brand-color-dimmed:    var(--brand-blue);
+        --minima-brand-color-light:     color-mix(in srgb, var(--brand-blue) 20%, var(--brand-dark-bg));
+        --minima-brand-color-dark:      color-mix(in srgb, var(--brand-blue) 70%, white);
+        --minima-site-title-color:      var(--brand-blue);
+        --minima-heading-color:         var(--brand-ink);
+        --minima-text-color:            var(--brand-ink);
+        --minima-background-color:      var(--brand-dark-bg);
+        --minima-code-background-color: color-mix(in srgb, var(--brand-blue) 6%, var(--brand-dark-bg));
+        --minima-link-base-color:       var(--brand-blue);
+        --minima-link-visited-color:    color-mix(in srgb, var(--brand-blue) 70%, gray);
+        --minima-link-hover-color:      color-mix(in srgb, var(--brand-blue) 50%, white);
+        --minima-border-color-01:       color-mix(in srgb, var(--brand-blue) 20%, var(--brand-dark-bg));
+        --minima-border-color-02:       color-mix(in srgb, var(--brand-blue) 30%, var(--brand-dark-bg));
+        --minima-border-color-03:       var(--brand-blue);
+        --minima-table-text-color:      var(--brand-ink);
+        --minima-table-zebra-color:     color-mix(in srgb, var(--brand-blue) 3%, var(--brand-dark-bg));
+        --minima-table-header-bg-color: color-mix(in srgb, var(--brand-blue) 8%, var(--brand-dark-bg));
+        --minima-table-header-border:   color-mix(in srgb, var(--brand-blue) 15%, var(--brand-dark-bg));
+        --minima-table-border-color:    color-mix(in srgb, var(--brand-blue) 20%, var(--brand-dark-bg));
+    }
+}
+
+// Blog index rows. The theme's spacing (30px li margin + 15px h3 margin)
+// was tuned for dated two-line rows (post-meta above the title); with the
+// date column removed, single-line titles float in oversized gaps and the
+// list looks unaligned. Zero the theme margins, keep equal row padding, and
+// lead each row with a disc marker — the same list style as the now page's
+// Archive section. (A hairline divider under each row reads as an underline,
+// doubled by the link's hover underline, so the marker replaces it.)
+// ::before instead of a native list marker: an outside marker is clipped
+// on mobile, where the wrapper's 15px padding can't fit the dot.
+.post-list {
+    > li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        margin-bottom: 0;
+        padding: 0.5rem 0;
+
+        &::before {
+            content: "\2022"; // •, same disc as the archive list
+            // Scaled up slightly: the archive dot sits on 1rem text,
+            // the titles here are 1.5rem.
+            font-size: 1.375rem;
+            // Ink, like the archive's markers; adapts to dark mode via token.
+            color: var(--minima-text-color);
+        }
+    }
+
+    // If post dates are re-enabled (site.show_blog_date), the date span
+    // becomes a flex item; keep it on one line so only the title wraps.
+    .post-meta {
+        white-space: nowrap;
+    }
+
+    h3 {
+        margin: 0;
+    }
+}
+
+// Images in post content — drop-shadow() follows the alpha channel, so
+// transparent PNGs (pixel art, icons) keep a seamless look: the shadow hugs
+// the actual shape instead of drawing a box around the transparent area.
+.post-content img {
+    filter: drop-shadow(0 2px 8px color-mix(in srgb, var(--brand-blue) 15%, transparent));
+}
+
+// Opt-in hard edge for screenshots with a solid/white background.
+// Standard markdown can't set classes on images, so use raw HTML:
+//   <img src="/assets/foo.png" alt="foo" class="framed">
+.post-content .framed {
+    border: 1px solid color-mix(in srgb, var(--brand-blue) 15%, transparent);
+    border-radius: 4px;
+}
+
+.project-icon {
+    height: var(--icon-size);
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.project-icon-apple {
+    @extend .project-icon;
+    width: var(--icon-size);
+    border-radius: 22%;
+}
+
+.icon--small {
+    --icon-size: 100px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.project-card {
+    position: relative;
+}
+
+// Minimal: no borders or fills — the grid's structure comes from spacing
+// and the unified square tiles. Hover feedback is just a title color shift.
+.project-card a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.project-card a:hover .project-title {
+    color: var(--minima-link-hover-color);
+}
+
+// Every project image renders in an identical square tile, regardless of the
+// source aspect ratio (app icons are square, book covers portrait);
+// object-fit: contain keeps the whole artwork visible inside the tile.
+.project-image {
+    width: var(--project-card-icon-size);
+    height: var(--project-card-icon-size);
+    margin: 0 auto 1rem;
+    display: grid;
+    place-items: center;
+    border-radius: 22%;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: 0;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    text-align: center;
+    transition: color 0.2s ease;
+}
+
+.project-description {
+    color: var(--minima-brand-color-dark);
+    font-size: 0.9rem;
+    margin-top: auto;
+    text-align: center;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin-bottom: 2em;
+
+    .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.avatar {
+    width: 4em;
+    border-radius: 50%;
+    margin-bottom: 1em;
+}
+
+details {
+    summary {
+        cursor: pointer;
+        user-select: none;
+        transition: color 0.2s ease;
+        // color: #495057;
+        color: $link-base-color;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        &:hover {
+            color: $link-hover-color;
+        }
+        
+        &::marker {
+            content: none;
+        }
+        
+        &::before {
+            content: '▶';
+            transition: all 0.2s ease;
+            font-size: 0.6em;
+            color: currentColor;
+            opacity: 0.7;
+            flex-shrink: 0;
+        }
+        
+        h2,
+        h3,
+        h4,
+        h5 {
+            display: inline-block;
+            margin: 0;
+        }
+    }
+    
+    &[open] summary::before {
+        transform: rotate(90deg);
+    }
+}
+
+// Align with headings' margin-top so the triangle and the text are center-aligned.
+// from the theme:
+// https://github.com/jekyll/minima/blob/1fe0fbfb5347fb4e047696d3b7479c04ed0051bc/_sass/minima/_layout.scss#L278C11-L278C13
+.post-content details summary:has(h1, h2, h3, h4, h5, h6) {
+    &::before {
+        margin-top: $spacing-unit;
+    }
+}
+
+// Language switcher (page headers + footer): the current language is not a
+// link — mute it so the blue link clearly reads as "switch to this one".
+// Ink mixed toward the background adapts to dark mode via the tokens.
+.lang-current {
+    color: color-mix(in srgb, var(--brand-ink) 45%, var(--minima-background-color));
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+    .movie-content {
+        flex-direction: column !important;
+    }
+
+    .comments {
+        padding-top: 2em;
+        padding-left: 0 !important;
+    }
+}
+
+.movie-content {
+    display: flex;
+    flex-direction: row;
+    // justify-content: flex-start;
+    // align-items: flex-start;
+
+    .cover {
+        flex: 1;
+    }
+
+    .comments {
+        flex: 1;
+        padding-left: 2em;
+    }
+}
+
+.list-box {
+    width: 12em;
+    display: inline-block;
+    margin: 1em;
+}
+
+form {
+
+    input[type="text"],
+    input[type="email"] {
+        padding: 0.5em;
+        width: 15em;
+    }
+
+    input[type="submit"] {
+        padding: 0.5em;
+        width: 8em;
+        font-size: 1em;
+    }
+}

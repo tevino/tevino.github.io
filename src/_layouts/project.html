@@ -1,0 +1,23 @@
+---
+layout: base
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+    {%- include post-language-switch.html -%}
+    {% if page.app_store_icon %}
+    <p><img class="project-icon-apple" src="{{ page.app_store_icon }}" alt="icon of {{ page.title }}"></p>
+    {% else %}
+    {% if page.icon %}
+    <p><img class="project-icon" src="{{ page.icon }}" alt="icon of {{ page.title }}"></p>
+    {% endif %}
+    {% endif %}
+    {% if page.website %}
+    <p><a href="{{ page.website }}">{% if page.lang == "zh"%}官方网站{% else %}Official website{% endif %}</a></p>
+    {% endif %}
+  </header>
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>

@@ -1,0 +1,69 @@
+{% comment %} Font Awesome 7 — the theme renders social icons with fa-brands; mirrors the theme's own placement in its footer include (pinned version matches) {% endcomment %}
+<link id="fa-stylesheet" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css">
+<footer class="site-footer h-card">
+    <data class="u-url" value="{{ "/" | relative_url }}"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            {% if page.show_collection_feed %}
+              {% assign feed_path = site.feed.collections[page.show_collection_feed].path %}
+              {% assign subscribe_text = "Subscribe " | append: page.title %}
+            {% else %}
+              {% assign feed_path = page.lang | append: "/feed.xml" %}
+              {% if page.lang == "zh" %}
+                {% assign subscribe_text = "订阅（仅中文）" %}
+              {% else %}
+                {% assign subscribe_text = "Subscribe (English Only)" %}
+              {% endif %}
+            {% endif %}
+            <a href="{{ feed_path | default: 'feed.xml' | absolute_url }}">
+              <svg class="svg-icon orange" viewbox="0 0 16 16">
+                <path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194
+                  11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0
+                  13.806c0-1.21.983-2.195 2.194-2.195zM10.606
+                  16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"
+                />
+              </svg><span>{{ subscribe_text }}</span>
+            </a>
+          </p>
+        {%- if site.author %}
+          <ul class="contact-list">
+            {% if site.author.name -%}
+              <li class="p-name">{{ site.author.name | escape }}</li>
+            {% endif -%}
+            {% if site.author.email -%}
+              <li><a class="u-email" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+            {%- endif %}
+              <li>{%- include pgp-key.html -%}</li>
+          </ul>
+        {%- endif %}
+        </div>
+        <div class="footer-col">
+          <p>
+            {%- if page.lang == "en" -%}
+              <span class="lang-current">English</span>
+            {%- else -%}
+              <a class="page-link" href="/en" title="English Only">English</a>
+            {%- endif -%}
+            <span> | </span>
+            {%- if page.lang == "zh" -%}
+              <span class="lang-current">中文</span>
+            {%- else -%}
+              <a class="page-link" href="/zh" title="仅中文">中文</a>
+            {%- endif -%}
+          </p>
+          {%- include cc.html -%}
+          <p>{{ site.description | escape | markdownify }}</p>
+        </div>
+      </div>
+  
+      <div class="social-links">
+        {%- include social.html -%}
+      </div>
+  
+    </div>
+  
+  </footer>

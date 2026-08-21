@@ -1,0 +1,44 @@
+---
+layout: base
+---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+  <h1>{{ page.date | date: date_format }}</h1>
+
+  <header class="post-header">
+    <div class="post-meta">
+      {% assign pdate = page.date | date_to_xmlschema %}
+      <time class="dt-published" datetime="{{ pdate }}" itemprop="datePublished">
+        {{ pdate | date: date_format }}
+      </time>
+      {%- if page.modified_date -%}
+        <span class="bullet-divider">•</span>
+        {%- assign mdate = page.modified_date | date_to_xmlschema %}
+        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
+          {{ mdate | date: date_format }}
+        </time>
+      {%- endif -%}
+      {%- if page.author %}
+      <div class="{% unless page.modified_date %}force-inline {% endunless %}post-authors">
+        {%- for author in page.author %}
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+          {%- if forloop.last == false %}, {% endif -%}
+        {% endfor %}
+      </div>
+      {%- endif -%}
+    </div>
+    {%- include post-language-switch.html -%}
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {%- if site.disqus.shortname -%}
+    {%- include comments.html -%}
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

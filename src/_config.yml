@@ -1,0 +1,225 @@
+# Permalinks
+permalink: pretty
+
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Tevin Zhang
+author:
+  name: Tevin Zhang
+  # NOTE: Don't include space or the rendering of {{ site.author.email }} might go wrong
+  email: "hey(at)tevinzhang(dot)com"
+  twitter: tevin_zhang
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://tevinzhang.com" # the base hostname & protocol for your site, e.g. http://example.com
+# utm_source in frontmatter are hard-coded
+utm_source: tevinzhang.com
+description: "A slice of Tevin's mind."
+# whether to display a date on the list of blog posts
+show_blog_date: false
+# whether to move the date of posts to the bottom
+bottom_date: true
+enable_lab_footer: false
+lab_footer_en: |
+  ☕ If you find the content of this site helpful, please consider [supporting the site][support].
+  Your support would be greatly appreciated, it will help with the content creation of the site.
+
+  [support]: https://ko-fi.com/tevinzhang
+lab_footer_zh: |
+  ☕ 如果本站的内容对您有帮助，请考虑[支持本站️][support]，衷心感谢您的支持，它将有助于本站的内容创作。
+
+  [support]: https://ko-fi.com/tevinzhang
+# Build settings
+# markdown: kramdown
+#markdown: CommonMarkGhPages
+markdown: CommonMark
+commonmark:
+  options: ["UNSAFE", "SMART", "FOOTNOTES"]
+  extensions: ["strikethrough", "autolink", "table"]
+# theme: minima
+# Use a newer minima, the latest release is 3 years ago
+remote_theme: jekyll/minima@4de322363fca5927e6f4012cb94f6dad69ab5e6c
+
+# an alias for site.minima.date_format
+date_format: "%Y-%m-%d"
+# configurations of minima v3
+minima:
+  skin: auto
+  # Minima date format
+  # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+  date_format: "%Y-%m-%d"
+  # The footer already renders per-language subscribe links, so keep the
+  # generic RSS link that the theme appends to the social list hidden.
+  hide_site_feed_link: true
+  social_links:
+    - title: "The fediverse"
+      icon: mastodon
+      url: "https://mastodon.tevinzhang.com/@tevin"
+    - title: "Personal Telegram"
+      icon: telegram
+      url: "https://t.me/tevino"
+    - title: "Things I made as a programmer publicly"
+      icon: github
+      url: "https://github.com/tevino"
+    #- title: "Switched to the fediverse"
+    #  icon: x-twitter
+    #  url: "https://twitter.com/tevin_zhang"
+
+twitter:
+  username: tevin_zhang
+  card: summary
+
+default_lang: en
+languages:
+  - code: en
+    name: English
+  - code: zh
+    name: 中文
+
+# NOTE:
+# 1. all URLs should end with a trailing slash
+# 2. language code must be the first part of the URL, so /en/x/y not /x/en/y
+# 
+# redirect_from were commented out because placeholders like `:title` are not supported
+defaults:
+  # posts i18n
+  - scope:
+      path: "_posts/en"
+      type: "posts"
+    values:
+      permalink: "/en/:title/"
+      # redirect_from:
+      #   - "/:title"
+      #   - "/en/:title"
+      lang: en
+      machine_translated: false
+  - scope:
+      path: "_posts/zh"
+      type: "posts"
+    values:
+      permalink: "/zh/:title/"
+      # redirect_from:
+      #   - "/zh/:title"
+      lang: zh
+      machine_translated: false
+  ## curated corner i18n
+  - scope:
+      path: "_curated_corner/en"
+    values:
+      permalink: "/en/curated-corner/:title/"
+      # redirect_from:
+      #   - "/en/curated-corner/:title"
+      #   - "/curated-corner/:title"
+      #   - "/curated-corner/:title/"
+      lang: en
+      machine_translated: false
+  - scope:
+      path: "_curated_corner/zh"
+    values:
+      permalink: "/zh/curated-corner/:title/"
+      # redirect_from: "/zh/curated-corner/:title"
+      lang: zh
+      machine_translated: false
+  # avatar
+  - scope:
+      path: ""
+    values:
+      image: /assets/avatar.png
+  # curated_corner
+  - scope:
+      path: "_curated_corner"
+    values:
+      layout: resource
+  # now
+  - scope:
+      path: "_now"
+    values:
+      layout: now
+  # now i18n
+  - scope:
+      path: "_now/zh"
+    values:
+      lang: zh
+      permalink: "/zh/now/:title/"
+      machine_translated: false
+  - scope:
+      path: "_now/en"
+    values:
+      lang: en
+      permalink: "/en/now/:title/"
+      machine_translated: false
+
+collections:
+  curated_corner:
+    output: true
+  movies:
+    output: true
+  projects:
+    output: true
+  now:
+    output: true
+
+header_pages:
+  #  - lab.html
+  - projects.en.md
+  - projects.zh.md
+  - curated-corner.en.md
+  - curated-corner.zh.md
+  - now.en.md
+  - now.zh.md
+  - about.en.md
+  - about.zh.md
+#  - movies.zh.md
+
+rss: feed
+
+#google_analytics: G-5KCRGZ0WR8
+# end
+
+plugins:
+  - jekyll-feed
+  # - jekyll-commonmark-ghpages
+  - jekyll-commonmark
+  - jekyll-seo-tag
+  - jekyll-redirect-from
+  - jekyll-last-modified-at
+  - jekyll-remote-theme
+  - jekyll-target-blank
+  - jekyll-sitemap
+
+target-blank:
+  noreferrer: false
+
+feed:
+  excerpt_only: true
+  collections:
+    curated_corner:
+      path: "/curated-corner/feed.xml"
+    now:
+      path: "/now/feed.xml"
+
+sass:
+  style: compressed
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
