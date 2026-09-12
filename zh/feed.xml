@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <link href="https://tevinzhang.com/zh/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://tevinzhang.com/" rel="alternate" type="text/html" />
+  <updated>2026-09-12T09:54:23+08:00</updated>
+  <id>https://tevinzhang.com/zh/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Tevin Zhang | </title>
+  
+
+  
+    <subtitle>A slice of Tevin&apos;s mind.</subtitle>
+  
+
+  
+    <author>
+        <name>Tevin Zhang</name>
+      
+        <email>hey(at)tevinzhang(dot)com</email>
+      
+      
+    </author>
+  
+
+  
+  
+  
+  
+  
+  
+  
+    <entry xml:lang="zh">
+      
+
+      <title type="html">修复群晖 WebDAV 的 CORS 问题，不改 Nginx</title>
+      <link href="https://tevinzhang.com/zh/fix-cors-for-synology-webdav-no-nginx-hacks/" rel="alternate" type="text/html" title="修复群晖 WebDAV 的 CORS 问题，不改 Nginx" />
+      <published>2026-01-22T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/zh/fix-cors-for-synology-webdav-no-nginx-hacks</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        <category term="lab" />
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[如何解决使用群晖 WebDAV 服务器时浏览器应用遇到的 CORS 超时问题。这个方案用 HAProxy 来可靠地处理 CORS 预检请求，避免 Nginx 配置文件被意外覆盖的痛苦。]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="zh">
+      
+
+      <title type="html">独立开发者的开发者市场陷阱</title>
+      <link href="https://tevinzhang.com/zh/the-developer-market-trap-for-indies/" rel="alternate" type="text/html" title="独立开发者的开发者市场陷阱" />
+      <published>2025-02-09T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/zh/the-developer-market-trap-for-indies</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        <category term="blog" />
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[你可能听过这样的建议：“从自己的需求出发”。这种方法确保了产品的真实性，降低了风险，并让你能够打造真正在意的东西。但对于以其他技术人员为客户的独立开发者1来说，这种方法并非总是理想的选择。 我在这篇文章中有意避免使用”独立黑客“这个术语，因为那将包括不涉及软件工程的创作者，尽管我猜这也适用于其中的一些人，但不是全部。 ↩]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="zh">
+      
+
+      <title type="html">我如何管理了 12 年的笔记</title>
+      <link href="https://tevinzhang.com/zh/notes-over-12-years/" rel="alternate" type="text/html" title="我如何管理了 12 年的笔记" />
+      <published>2024-08-23T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/zh/notes-over-12-years</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        <category term="blog" />
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[我有一个从2012年开始的Git仓库。在那之前，我记得使用Notational Velocity1和一堆文本文件，它运行得很好，直到我决定将我的笔记保留一辈子。如果我没有将它们数字化，我会在索引卡上写笔记，并将它们存放在盒子里进行组织。只要我能保存这些盒子，我就能保留我的笔记。 [Notational Velocity][5] 是一个让我快速搜索和切换文件的文本编辑器。后来我转用了[nvALT][6]，这是Notational Velocity的一个分支，增加了一些额外功能和界面修改，包括MultiMarkdown功能。 ↩]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="zh">
+      
+
+      <title type="html">家用小型管理交换机对比</title>
+      <link href="https://tevinzhang.com/zh/home-switches-comparison/" rel="alternate" type="text/html" title="家用小型管理交换机对比" />
+      <published>2024-06-03T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/zh/home-switches-comparison</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[需求是 VLAN 单线复用，不用 IPTV 但需要把弱电箱里的网口通过一根线交换到另一个房间的路由上，同时兼顾拨号。千兆交换够用，也是考虑到目前更高带宽设备的普及度和性价比后的一个更实际的选择。]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="zh">
+      
+
+      <title type="html">不要把企业当人看</title>
+      <link href="https://tevinzhang.com/zh/dont-humanize-businesses/" rel="alternate" type="text/html" title="不要把企业当人看" />
+      <published>2024-01-12T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/zh/dont-humanize-businesses</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        <category term="blog" />
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[无缘无故被解雇就像是被一个我真心想要相信的公司狠狠地打了一巴掌]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="zh">
+      
+
+      <title type="html">在OpenBSD上进行私有Git托管</title>
+      <link href="https://tevinzhang.com/zh/git-hosting/" rel="alternate" type="text/html" title="在OpenBSD上进行私有Git托管" />
+      <published>2023-10-05T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/zh/git-hosting</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[2023-12-11: 添加了第二种 clone 方式]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="zh">
+      
+
+      <title type="html">在 Yunohost 上备份 crontabs</title>
+      <link href="https://tevinzhang.com/zh/backup-crontabs-on-yunohost/" rel="alternate" type="text/html" title="在 Yunohost 上备份 crontabs" />
+      <published>2023-09-16T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/zh/backup-crontabs-on-yunohost</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[YunoHost通常已经知道需要备份什么。但是，如果您进行了手动更改，例如在YunoHost应用程序系统之外安装了应用程序，您可能希望扩展YunoHost的机制以指定其他要备份的文件。]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="zh">
+      
+
+      <title type="html">联邦宇宙平台评估</title>
+      <link href="https://tevinzhang.com/zh/fediverse-evaluation/" rel="alternate" type="text/html" title="联邦宇宙平台评估" />
+      <published>2023-09-11T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/zh/fediverse-evaluation</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[随着推特变成又一个抖音并加大了对内容的控制1 2,我开始使用联邦宇宙作为替代品。 推特会压制它们不喜欢的内容,例如提及竞争对手 Mastodon 时。 ↩ [An Audacious Plan to Halt the Internet’s Enshittification - Cory Doctorow][1] ↩]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="zh">
+      
+
+      <title type="html">在 Jekyll 中使用 “details” 元素</title>
+      <link href="https://tevinzhang.com/zh/jekyll-details/" rel="alternate" type="text/html" title="在 Jekyll 中使用 “details” 元素" />
+      <published>2023-08-11T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/zh/jekyll-details</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[什么是 details 元素]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="zh">
+      
+
+      <title type="html">数据存储与文明的衰落</title>
+      <link href="https://tevinzhang.com/zh/longevity/" rel="alternate" type="text/html" title="数据存储与文明的衰落" />
+      <published>2023-08-08T00:00:00+08:00</published>
+      <updated>2026-09-10T13:59:10+08:00</updated>
+      <id>https://tevinzhang.com/zh/longevity</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[我长期以来一直有一个关于数据存储与人类文明终结的疯狂猜想。]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+</feed>

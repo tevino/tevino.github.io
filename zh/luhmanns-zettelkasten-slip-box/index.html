@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>卢曼的卡片盒（Zettelkasten） | Tevin Zhang</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="卢曼的卡片盒（Zettelkasten）" />
+<meta name="author" content="Tevin Zhang" />
+<meta property="og:locale" content="zh" />
+<meta name="description" content="本文是[卡片盒系统手册][zk_m]的一部分。 介绍 Zettelkasten是由尼克拉斯·卢曼创建的非线性笔记归档系统，他称之为他的”第二大脑”或所谓的交流伙伴。 “Zettelkasten”一词在德语中意为”卡片盒”，指的是存储在盒子中的手写笔记集合，这些笔记通过引用相互连接，类似于万维网的超链接1，但早在20世纪50年代就已经在纸上实现，而不是在互联网上。 虽然在形式上与个人维基相似，但这两个系统在创建和功能上有所不同。Zettelkasten可以使用维基来实现，但并非所有的维基都是Zettelkasten，大多数都不是。 [Berners-Lee, Tim. The Original Proposal of the WWW, HTMLized. Mar. 1989][1]. [zk_m]: https://thezettelkasten.com?utm_source=tevinzhang.com ↩" />
+<meta property="og:description" content="本文是[卡片盒系统手册][zk_m]的一部分。 介绍 Zettelkasten是由尼克拉斯·卢曼创建的非线性笔记归档系统，他称之为他的”第二大脑”或所谓的交流伙伴。 “Zettelkasten”一词在德语中意为”卡片盒”，指的是存储在盒子中的手写笔记集合，这些笔记通过引用相互连接，类似于万维网的超链接1，但早在20世纪50年代就已经在纸上实现，而不是在互联网上。 虽然在形式上与个人维基相似，但这两个系统在创建和功能上有所不同。Zettelkasten可以使用维基来实现，但并非所有的维基都是Zettelkasten，大多数都不是。 [Berners-Lee, Tim. The Original Proposal of the WWW, HTMLized. Mar. 1989][1]. [zk_m]: https://thezettelkasten.com?utm_source=tevinzhang.com ↩" />
+<link rel="canonical" href="https://tevinzhang.com/zh/luhmanns-zettelkasten-slip-box/" />
+<meta property="og:url" content="https://tevinzhang.com/zh/luhmanns-zettelkasten-slip-box/" />
+<meta property="og:site_name" content="Tevin Zhang" />
+<meta property="og:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-12T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="twitter:title" content="卢曼的卡片盒（Zettelkasten）" />
+<meta name="twitter:site" content="@tevin_zhang" />
+<meta name="twitter:creator" content="@tevin_zhang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tevin Zhang"},"dateModified":"2026-01-25T22:50:08+08:00","datePublished":"2020-08-12T00:00:00+08:00","description":"本文是[卡片盒系统手册][zk_m]的一部分。 介绍 Zettelkasten是由尼克拉斯·卢曼创建的非线性笔记归档系统，他称之为他的”第二大脑”或所谓的交流伙伴。 “Zettelkasten”一词在德语中意为”卡片盒”，指的是存储在盒子中的手写笔记集合，这些笔记通过引用相互连接，类似于万维网的超链接1，但早在20世纪50年代就已经在纸上实现，而不是在互联网上。 虽然在形式上与个人维基相似，但这两个系统在创建和功能上有所不同。Zettelkasten可以使用维基来实现，但并非所有的维基都是Zettelkasten，大多数都不是。 [Berners-Lee, Tim. The Original Proposal of the WWW, HTMLized. Mar. 1989][1]. [zk_m]: https://thezettelkasten.com?utm_source=tevinzhang.com ↩","headline":"卢曼的卡片盒（Zettelkasten）","image":"https://tevinzhang.com/assets/avatar.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://tevinzhang.com/zh/luhmanns-zettelkasten-slip-box/"},"url":"https://tevinzhang.com/zh/luhmanns-zettelkasten-slip-box/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://tevinzhang.com/feed.xml" title="Tevin Zhang" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#0F64B5">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#FFFBEA">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#FFFBEA">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1a1f24">
+<meta name="robots" content="noai, noimageai">
+
+
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "htf4lzs4f1");
+</script>
+
+
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.tevinzhang.com"]);
+  _paq.push(["setDomains", ["*.tevinzhang.com","*.tevino.github.io"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//a.tevinzhang.com/m/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//a.tevinzhang.com/m/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+
+</head><body><header class="site-header">
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/zh">Tevin Zhang</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger">
+            <label for="nav-trigger">
+                <span class="menu-icon"></span>
+            </label>
+
+            <div class="nav-items">
+<a class="nav-item" href="/zh/projects/">工坊</a><a class="nav-item" href="/zh/curated-corner/">推荐区</a><a class="nav-item" href="/zh/now/">近况</a><a class="nav-item" href="/zh/about/">关于</a>
+</div>
+        </nav>
+</div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">卢曼的卡片盒（Zettelkasten）</h1>
+<p class="post-meta">
+      <a class="page-link" href="/en/luhmanns-zettelkasten-slip-box/" title="英文">
+        英文
+      </a><span> | </span><span class="lang-current">中文</span>
+  | <strong>以下是机翻内容</strong></p>
+</header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><strong>本文是<a href="https://thezettelkasten.com?utm_source=tevinzhang.com" target="_blank" rel="noopener">卡片盒系统手册</a>的一部分</strong>。</p>
+<hr>
+<h2>介绍</h2>
+<p>Zettelkasten是由尼克拉斯·卢曼创建的非线性笔记归档系统，他称之为他的”第二大脑”或所谓的交流伙伴。</p>
+<p>“Zettelkasten”一词在德语中意为”卡片盒”，指的是存储在盒子中的手写笔记集合，这些笔记通过引用相互连接，类似于万维网的超链接<sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup>，但早在20世纪50年代就已经在纸上实现，而不是在互联网上。</p>
+<p>虽然在形式上与个人维基相似，但这两个系统在创建和功能上有所不同。Zettelkasten可以使用维基来实现，但并非所有的维基都是Zettelkasten，大多数都不是。</p>
+<!--more-->
+<h3>尼克拉斯·卢曼</h3>
+<p>尼克拉斯·卢曼在比勒费尔德大学担任社会学教授25年（1968-1993），发表了<strong>500多篇文章和书籍，涉及广泛的主题</strong>。他将自己前所未有的生产力归功于他的Zettelkasten系统，在一次采访中他说：</p>
+<blockquote>
+<p>我并不是自己思考所有的事情，大部分都发生在卡片盒里。</p>
+<p>…</p>
+<p>我的生产力本质上可以从卡片盒系统中得到解释。</p>
+<p>…</p>
+<p>卡片盒花费我的时间比写一本书还多。</p>
+</blockquote>
+<h3>卢曼的卡片盒</h3>
+<p>卢曼将笔记记在存储在木盒中的小纸片上，最终形成了两个集合，共90,000张A6格式的手写卡片，按顺序编号。</p>
+<p><img src="/assets/zettelkasten-photo.jpg" alt="Zettelkasten">
+“Zettelkasten”照片来自<a href="https://niklas-luhmann-archiv.de/bestand?utm_source=tevinzhang.com" target="_blank" rel="noopener">“Niklas Luhmann-Archiv”</a>，根据<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?utm_source=tevinzhang.com" target="_blank" rel="noopener">CC-BY-NC-SA 4.0</a>许可使用。</p>
+<p>这些笔记包含了他的思想、论点和概念，而不仅仅是摘录，以下是关于它们的一些事实<sup class="footnote-ref"><a href="#fn2" id="fnref2">2</a></sup> <sup class="footnote-ref"><a href="#fn3" id="fnref3">3</a></sup> <sup class="footnote-ref"><a href="#fn4" id="fnref4">4</a></sup>。</p>
+<ul>
+<li>
+<p>总共两个集合</p>
+</li>
+<li>
+<p>90,000张A6格式的手写卡片</p>
+</li>
+<li>
+<p>卡片按顺序编号</p>
+</li>
+<li>
+<p>笔记不仅仅是摘录，它包含了他的思想、理论论点和概念</p>
+</li>
+<li>
+<p>第一个集合是在他从一个对宪法和行政科学感兴趣的法律专家转变为系统理论社会学家时创建的</p>
+</li>
+<li>
+<p>就在他创建第二个集合之前（1960 - 1961），他在美国马萨诸塞州剑桥的哈佛公共管理学院度过了一年，在那里他参加了当时系统理论领域领先社会学家塔尔科特·帕森斯的讲座</p>
+</li>
+<li>
+<p>在文学遗产中没有文件证实他访问哈佛是开始新的笔记集合的触发因素，但这似乎是显而易见的</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>第一个集合</th>
+<th>第二个集合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>创建时间</td>
+<td>1951 - 1962</td>
+<td>1963 - 1997</td>
+</tr>
+<tr>
+<td>手写卡片数量</td>
+<td>23,000</td>
+<td>67,000</td>
+</tr>
+<tr>
+<td>内容</td>
+<td>他在政治学、行政学、组织理论、哲学和社会学方面的阅读</td>
+<td>社会学</td>
+</tr>
+<tr>
+<td>顶级分区数量</td>
+<td>108</td>
+<td>11</td>
+</tr>
+<tr>
+<td>顶级分区</td>
+<td>国家、平等、规划、权力、宪法、革命、等级制度、科学、角色、世界概念、信息等</td>
+<td>组织理论、功能主义、决策理论、办公室、正式/非正式秩序、主权/国家、个人概念/个人问题、经济、临时笔记、古代社会、先进文明</td>
+</tr>
+<tr>
+<td>子分区数量</td>
+<td></td>
+<td>100</td>
+</tr>
+<tr>
+<td>分区分隔符</td>
+<td>逗号: ,</td>
+<td>斜线 /</td>
+</tr>
+<tr>
+<td>参考书目</td>
+<td>两个，包含2,000个标题</td>
+<td>一个，不完整，包含15,000个参考</td>
+</tr>
+<tr>
+<td>关键词索引</td>
+<td>1,250个条目</td>
+<td>3,200个条目</td>
+</tr>
+<tr>
+<td>引用数量</td>
+<td>20,000</td>
+<td>30,000</td>
+</tr>
+<tr>
+<td>平均引用</td>
+<td>几乎每张卡片都有引用</td>
+<td>几乎每两张卡片就有一个引用</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<section class="footnotes">
+<ol>
+<li id="fn1">
+<p><a href="https://www.w3.org/History/1989/proposal.html?utm_source=tevinzhang.com" target="_blank" rel="noopener">Berners-Lee, Tim. The Original Proposal of the WWW, HTMLized. Mar. 1989</a>. <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2">
+<p>Schmidt, Johannes F. K. “Der Nachlass Niklas Luhmanns – eine erste Sichtung: Zettelkasten und Manuskripte.” Soziale Systeme, vol. 19, no. 1, Jan. 2014. DOI.org (Crossref), doi:10.1515/sosys-2014-0111. <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn3">
+<p><a href="http://ds.ub.uni-bielefeld.de/viewer/ppnresolver?id=ZL1Bibliographie1?utm_source=tevinzhang.com" target="_blank" rel="noopener">Luhmann, Niklas. Bibliographie 1. Universitätsbibliothek Bielefeld, 1 June 2017</a>. Card Index Box. <a href="#fnref3" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn4">
+<p><a href="http://ds.ub.uni-bielefeld.de/viewer/piresolver?id=ZL1Bibliographie2?utm_source=tevinzhang.com" target="_blank" rel="noopener">Luhmann, Niklas. Bibliographie 2. Universitätsbibliothek Bielefeld, 1 June 2017</a>. Card Index Box. <a href="#fnref4" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+  </div>
+<p class="post-meta">
+    <time class="dt-published" datetime="2020-08-12T00:00:00+08:00" itemprop="datePublished">
+      2020-08-12
+    </time><span class="bullet-divider">•</span><time class="dt-modified" datetime="2024-09-11T00:00:00+08:00" itemprop="dateModified">
+        2024-09-11
+      </time></p>
+<a class="u-url" href="/zh/luhmanns-zettelkasten-slip-box/" hidden></a>
+</article>
+
+      </div>
+    </main>
+<link id="fa-stylesheet" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css">
+<footer class="site-footer h-card">
+    <data class="u-url" value="/"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            
+            <a href="https://tevinzhang.com/zh/feed.xml">
+              <svg class="svg-icon orange" viewbox="0 0 16 16">
+                <path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194
+                  11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0
+                  13.806c0-1.21.983-2.195 2.194-2.195zM10.606
+                  16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"></path>
+              </svg><span>订阅（仅中文）</span>
+            </a>
+          </p>
+          <ul class="contact-list">
+            <li class="p-name">Tevin Zhang</li>
+            <li><a class="u-email" href="mailto:hey(at)tevinzhang(dot)com">hey(at)tevinzhang(dot)com</a></li>
+              <li><a href="/pgp.asc" rel="pgpkey authn">PGP Key</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p><a class="page-link" href="/en" title="English Only">English</a><span> | </span><span class="lang-current">中文</span></p>
+<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://tevinzhang.com">张天文</a> © 2013–2026 — CC BY-NC-SA 4.0<p></p>
+<p>A slice of Tevin's mind.</p>
+
+        </div>
+      </div>
+  
+      <div class="social-links">
+<ul class="social-media-list">
+<li>
+    <a rel="me noopener" href="https://mastodon.tevinzhang.com/@tevin" target="_blank" title="The fediverse">
+      <span class="grey fa-brands fa-mastodon fa-lg"></span>
+    </a>
+  </li>
+<li>
+    <a rel="me noopener" href="https://t.me/tevino" target="_blank" title="Personal Telegram">
+      <span class="grey fa-brands fa-telegram fa-lg"></span>
+    </a>
+  </li>
+<li>
+    <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Things I made as a programmer publicly">
+      <span class="grey fa-brands fa-github fa-lg"></span>
+    </a>
+  </li>
+</ul>
+</div>
+  
+    </div>
+  
+  </footer>
+
+</body>
+
+</html>

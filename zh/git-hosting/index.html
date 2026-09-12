@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>在OpenBSD上进行私有Git托管 | Tevin Zhang</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="在OpenBSD上进行私有Git托管" />
+<meta name="author" content="Tevin Zhang" />
+<meta property="og:locale" content="zh" />
+<meta name="description" content="2023-12-11: 添加了第二种 clone 方式" />
+<meta property="og:description" content="2023-12-11: 添加了第二种 clone 方式" />
+<link rel="canonical" href="https://tevinzhang.com/zh/git-hosting/" />
+<meta property="og:url" content="https://tevinzhang.com/zh/git-hosting/" />
+<meta property="og:site_name" content="Tevin Zhang" />
+<meta property="og:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-10-05T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="twitter:title" content="在OpenBSD上进行私有Git托管" />
+<meta name="twitter:site" content="@tevin_zhang" />
+<meta name="twitter:creator" content="@tevin_zhang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tevin Zhang"},"dateModified":"2026-01-25T22:50:08+08:00","datePublished":"2023-10-05T00:00:00+08:00","description":"2023-12-11: 添加了第二种 clone 方式","headline":"在OpenBSD上进行私有Git托管","image":"https://tevinzhang.com/assets/avatar.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://tevinzhang.com/zh/git-hosting/"},"url":"https://tevinzhang.com/zh/git-hosting/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://tevinzhang.com/feed.xml" title="Tevin Zhang" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#0F64B5">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#FFFBEA">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#FFFBEA">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1a1f24">
+<meta name="robots" content="noai, noimageai">
+
+
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "htf4lzs4f1");
+</script>
+
+
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.tevinzhang.com"]);
+  _paq.push(["setDomains", ["*.tevinzhang.com","*.tevino.github.io"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//a.tevinzhang.com/m/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//a.tevinzhang.com/m/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+
+</head><body><header class="site-header">
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/zh">Tevin Zhang</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger">
+            <label for="nav-trigger">
+                <span class="menu-icon"></span>
+            </label>
+
+            <div class="nav-items">
+<a class="nav-item" href="/zh/projects/">工坊</a><a class="nav-item" href="/zh/curated-corner/">推荐区</a><a class="nav-item" href="/zh/now/">近况</a><a class="nav-item" href="/zh/about/">关于</a>
+</div>
+        </nav>
+</div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">在OpenBSD上进行私有Git托管</h1>
+<p class="post-meta">
+      <a class="page-link" href="/en/git-hosting/" title="英文">
+        英文
+      </a><span> | </span><span class="lang-current">中文</span>
+  | <strong>以下是机翻内容</strong></p>
+</header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul>
+<li>2023-12-11: 添加了第二种 clone 方式</li>
+</ul>
+<p>多年来，我一直在自托管的Gogs服务器上托管我的个人Git仓库。尽管一些小问题一直存在，但我一直忍受着，直到最近。在再次 <code>push</code> 时发生了500错误后，我终于决定是时候迁移到一个更可靠的平台了。</p>
+<p>我决定尝试Gitea，希望它能带来一些稳定性以及我一直渴望的代码搜索功能。</p>
+<p>虽然我没有使用像问题和合并请求等功能，但迁移并不容易，我设法使用<a href="https://github.com/Martchus/gogs2gitea/blob/3660f9dfc6fda004889be3c8ec819c2d23fa761e/gogs2gitea?utm_source=tevinzhang.com" target="_blank" rel="noopener">一个修改版本的 Perl 迁移脚本</a>成功迁移了大多数仓库。由于在迁移过程中Gitea出现了各种错误，其他仓库必须以非常手动的方式迁移。</p>
+<p>当我最终迁移了所有仓库时，我发现Gitea上的一些仓库是空的，而它们在Gogs上的原始仓库不是空的。这些仓库是第一批迁移，Gitea声称已成功迁移，我找出了问题并成功迁移了那些空的仓库。</p>
+<p>此时，我的迁移已完全完成，Gitea正与我以前的所有仓库一起工作。然而，Gitea给我的虚假阳性<sup class="footnote-ref"><a href="#fn1" id="fnref1">1</a></sup>是不可接受的，如果我相信了它们，可能会导致数据丢失，对于Git仓库，数据完整性始终是第一位的。</p>
+<p>最后，我销毁了刚刚迁移到的Gitea实例，并将所有仓库通过SSH迁移到了一个原始的OpenBSD服务器上，这简单、有效且非常稳定，下面是具体步骤。</p>
+<h2>先决条件</h2>
+<ul>
+<li>启用 <code>sshd(8)</code><sup class="footnote-ref"><a href="#fn2" id="fnref2">2</a></sup>
+</li>
+<li>安装 <code>git</code> (<code>pkg_add git</code>)</li>
+<li>设置 <code>doas(1)</code>（查看 <code>doas.conf(5)</code>）或修改命令以不使用它</li>
+</ul>
+<h2>配置服务器</h2>
+<h3>创建git用户</h3>
+<p>即使您是唯一访问这些仓库的人，也提供了更多的安全性和隔离，通常是需要的。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mkdir -p /home/git
+# user add git
+# chown -R git:git /home/git
+</code></pre></div></div>
+<h3>限制用户</h3>
+<p><code>git-shell(1)</code> 随 <code>git(1)</code> 一起提供，是专门用于Git-Only SSH访问的受限登录Shell。</p>
+<p>将这个Shell设置为git用户的默认Shell：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># chsh git -s $(which git-shell)
+</code></pre></div></div>
+<p>将以下内容添加到 <code>/etc/ssh/sshd_config</code> 以限制<strong>git</strong>用户的某些SSH功能，确保它不能通过SSH执行潜在的风险操作。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Match User git
+	AllowAgentForwarding no
+	AllowTcpForwarding no
+	X11Forwarding no
+	PermitTTY no
+</code></pre></div></div>
+<h3>创建仓库</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>doas -u git git init --bare /home/git/test.git
+</code></pre></div></div>
+<p>这会初始化git配置，以便为该仓库计划定时维护任务。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>doas -u git GIT_DIR=/home/git/test.git git maintanence register
+</code></pre></div></div>
+<p>结果保存在 <code>/home/git/.gitconfig</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[maintenance]
+	repo = /home/git/test.git
+</code></pre></div></div>
+<h3>启动定时维护任务</h3>
+<p>只需运行一次，在 cron 中安装定期维护任务</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># doas -u git GIT_DIR=/home/git/test.git git maintanence start
+</code></pre></div></div>
+<p>使用以下命令查看添加的 cron 任务：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># doas -u git crontab -l
+</code></pre></div></div>
+<p>添加的任务大概长这样</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># BEGIN GIT MAINTENANCE SCHEDULE
+# The following schedule was created by Git
+# Any edits made in this region might be
+# replaced in the future by a Git command.
+
+0 1-23 * * * "/usr/local/libexec/git/git" --exec-path="/usr/local/libexec/git" for-each-repo --config=maintenance.repo maintenance run --schedule=hourly
+0 0 * * 1-6 "/usr/local/libexec/git/git" --exec-path="/usr/local/libexec/git" for-each-repo --config=maintenance.repo maintenance run --schedule=daily
+0 0 * * 0 "/usr/local/libexec/git/git" --exec-path="/usr/local/libexec/git" for-each-repo --config=maintenance.repo maintenance run --schedule=weekly
+
+# END GIT MAINTENANCE SCHEDULE
+</code></pre></div></div>
+<h2>在客户端</h2>
+<p>克隆仓库</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># git clone git@your.domain:test.git
+</code></pre></div></div>
+<p>对于位于 <code>/home/git/folder/repo.git</code> 下的仓库</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># git clone git@your.domain:folder/repo.git
+</code></pre></div></div>
+<p><strong>注意</strong>: 这是一个类 scp 语法, 因此不用加 <code>ssh://</code>.</p>
+<p>或者</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># git clone ssh://git@your.domain:/~/folder/repo.git
+</code></pre></div></div>
+<p>剩下的你知道了</p>
+<h2>下一步</h2>
+<ul>
+<li>如果还没有，请为 <code>/home/git</code> 设置备份</li>
+<li>在 <code>/home/git/git-shell-commands</code> 下创建自定义脚本<sup class="footnote-ref"><a href="#fn3" id="fnref3">3</a></sup> 以执行常见的仓库操作，如CRUD</li>
+<li>如果需要公共访问，或者需要Web UI，设置 <code>git-daemon(1)</code>，<code>giweb(1)</code>，<a href="https://git.zx2c4.com/cgit/?utm_source=tevinzhang.com" target="_blank" rel="noopener">cgit</a>
+</li>
+</ul>
+<section class="footnotes">
+<ol>
+<li id="fn1">
+<p><a href="https://mastodon.tevinzhang.com/@tevin/111129696403308201?utm_source=tevinzhang.com" target="_blank" rel="noopener">https://mastodon.tevinzhang.com/@tevin/111129696403308201?utm_source=tevinzhang.com</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2">
+<p><a href="https://web.archive.org/web/20230601051850/https://phoenixnap.com/kb/git-ssh-vs-https?utm_source=tevinzhang.com" target="_blank" rel="noopener">Git 官方文档在 SSH 和 HTTPS 之间多次反复变更了建议的协议</a>. 对我而言，SSH 更容易配置， 更安全并且性能更高。 <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn3">
+<p>我目前实现了 <code>help</code>，<code>add_key</code>，<code>ls</code>，<code>mkrepo</code>(包括维护任务的注册) 和 <code>rm</code> (基于 <code>trash(1)</code>) <a href="#fnref3" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+
+<footer class="site-footer h-card"><table class="post-meta">
+        <tbody>
+<tr>
+                <th>OpenBSD</th>
+                <td>
+<p>v7.3</p>
+</td>
+            </tr>
+<tr>
+                <th>Gogs</th>
+                <td>
+<p>v0.13</p>
+</td>
+            </tr>
+<tr>
+                <th>Gitea</th>
+                <td>
+<p>v1.18.5</p>
+</td>
+            </tr>
+<tr>
+                <th>Git</th>
+                <td>
+<p>v2.40.0</p>
+</td>
+            </tr>
+</tbody>
+    </table></footer>
+  </div>
+<p class="post-meta">
+    <time class="dt-published" datetime="2023-10-05T00:00:00+08:00" itemprop="datePublished">
+      2023-10-05
+    </time></p>
+<a class="u-url" href="/zh/git-hosting/" hidden></a>
+</article>
+
+      </div>
+    </main>
+<link id="fa-stylesheet" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css">
+<footer class="site-footer h-card">
+    <data class="u-url" value="/"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            
+            <a href="https://tevinzhang.com/zh/feed.xml">
+              <svg class="svg-icon orange" viewbox="0 0 16 16">
+                <path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194
+                  11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0
+                  13.806c0-1.21.983-2.195 2.194-2.195zM10.606
+                  16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"></path>
+              </svg><span>订阅（仅中文）</span>
+            </a>
+          </p>
+          <ul class="contact-list">
+            <li class="p-name">Tevin Zhang</li>
+            <li><a class="u-email" href="mailto:hey(at)tevinzhang(dot)com">hey(at)tevinzhang(dot)com</a></li>
+              <li><a href="/pgp.asc" rel="pgpkey authn">PGP Key</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p><a class="page-link" href="/en" title="English Only">English</a><span> | </span><span class="lang-current">中文</span></p>
+<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://tevinzhang.com">张天文</a> © 2013–2026 — CC BY-NC-SA 4.0<p></p>
+<p>A slice of Tevin's mind.</p>
+
+        </div>
+      </div>
+  
+      <div class="social-links">
+<ul class="social-media-list">
+<li>
+    <a rel="me noopener" href="https://mastodon.tevinzhang.com/@tevin" target="_blank" title="The fediverse">
+      <span class="grey fa-brands fa-mastodon fa-lg"></span>
+    </a>
+  </li>
+<li>
+    <a rel="me noopener" href="https://t.me/tevino" target="_blank" title="Personal Telegram">
+      <span class="grey fa-brands fa-telegram fa-lg"></span>
+    </a>
+  </li>
+<li>
+    <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Things I made as a programmer publicly">
+      <span class="grey fa-brands fa-github fa-lg"></span>
+    </a>
+  </li>
+</ul>
+</div>
+  
+    </div>
+  
+  </footer>
+
+</body>
+
+</html>

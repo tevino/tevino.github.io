@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <link href="https://tevinzhang.com/en/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://tevinzhang.com/" rel="alternate" type="text/html" />
+  <updated>2026-09-12T09:54:23+08:00</updated>
+  <id>https://tevinzhang.com/en/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Tevin Zhang | </title>
+  
+
+  
+    <subtitle>A slice of Tevin&apos;s mind.</subtitle>
+  
+
+  
+    <author>
+        <name>Tevin Zhang</name>
+      
+        <email>hey(at)tevinzhang(dot)com</email>
+      
+      
+    </author>
+  
+
+  
+  
+  
+  
+  
+  
+  
+    <entry xml:lang="en">
+      
+
+      <title type="html">Fix CORS for Synology WebDAV, no Nginx hacks</title>
+      <link href="https://tevinzhang.com/en/fix-cors-for-synology-webdav-no-nginx-hacks/" rel="alternate" type="text/html" title="Fix CORS for Synology WebDAV, no Nginx hacks" />
+      <published>2026-01-22T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/en/fix-cors-for-synology-webdav-no-nginx-hacks</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        <category term="lab" />
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[How to fix CORS timeouts when using Synology’s WebDAV server with browser-based applications. The solution uses HAProxy to handle CORS preflight requests reliably, avoiding the pain of Nginx configuration files being overwritten unexpectedly.]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="en">
+      
+
+      <title type="html">The developer market trap for indies</title>
+      <link href="https://tevinzhang.com/en/the-developer-market-trap-for-indies/" rel="alternate" type="text/html" title="The developer market trap for indies" />
+      <published>2025-02-09T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/en/the-developer-market-trap-for-indies</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        <category term="blog" />
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[You’ve likely heard the advice: “Start with your own needs”. This approach ensures authenticity, reduces risk, and allows you to build something you genuinely care about. But for indie developers1 whose customers are fellow techies, this approach may not always be ideal. I intentionally avoided the term “indie hackers” in this post because that will include creators that don’t involve software engineering, though I guess this applies to some of them as well, but not all. ↩]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="en">
+      
+
+      <title type="html">How I’ve managed notes over 12 years</title>
+      <link href="https://tevinzhang.com/en/notes-over-12-years/" rel="alternate" type="text/html" title="How I’ve managed notes over 12 years" />
+      <published>2024-08-15T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/en/notes-over-12-years</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        <category term="blog" />
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[I have a Git repository dating back to 2012. Before that, I remember using Notational Velocity1 with a bunch of text files, it worked well, until I decided to keep my notes for life. If I’m not digitizing them, I’ll write notes on index cards and store them in boxes for organizing. As long as I can keep the boxes, I get to keep my notes. [Notational Velocity][5] is a text editor that lets me quickly search and switch between files. Later I switched to [nvALT][6]—a fork of Notational Velocity with some additional features and interface modifications, including MultiMarkdown functionality. ↩]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="en">
+      
+
+      <title type="html">Home switches comparison</title>
+      <link href="https://tevinzhang.com/en/home-switches-comparison/" rel="alternate" type="text/html" title="Home switches comparison" />
+      <published>2024-06-03T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/en/home-switches-comparison</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[The requirement is VLAN single-line multiplexing. Although IPTV is not needed, I need to switch the network port in the weak current box to a router in another room through a single line, while also accommodating dial-up. Gigabit switching is adequate and a more practical choice after considering the current popularity and cost effectiveness of higher bandwidth devices.]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="en">
+      
+
+      <title type="html">Don’t humanize businesses</title>
+      <link href="https://tevinzhang.com/en/dont-humanize-businesses/" rel="alternate" type="text/html" title="Don’t humanize businesses" />
+      <published>2024-01-12T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/en/dont-humanize-businesses</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        <category term="blog" />
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[To be let go for no reason is like a huge slap in the face from a company that I really wanted to believe in]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="en">
+      
+
+      <title type="html">Private git hosting on OpenBSD</title>
+      <link href="https://tevinzhang.com/en/git-hosting/" rel="alternate" type="text/html" title="Private git hosting on OpenBSD" />
+      <published>2023-10-05T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/en/git-hosting</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[2023-12-11: Added an alternative way to clone]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="en">
+      
+
+      <title type="html">Backup crontabs on Yunohost</title>
+      <link href="https://tevinzhang.com/en/backup-crontabs-on-yunohost/" rel="alternate" type="text/html" title="Backup crontabs on Yunohost" />
+      <published>2023-09-16T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/en/backup-crontabs-on-yunohost</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[YunoHost usually already knows what needs to be backed up. However, if you have made manual changes, such as installing an app outside of the YunoHost application system, you may want to extend YunoHost’s mechanism to specify other files to be backed up.]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="en">
+      
+
+      <title type="html">Fediverse platform evaluation</title>
+      <link href="https://tevinzhang.com/en/fediverse-evaluation/" rel="alternate" type="text/html" title="Fediverse platform evaluation" />
+      <published>2023-09-11T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/en/fediverse-evaluation</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[With Twitter becoming yet another TikTok and increasing control over content1 2, I started using the fediverse as an alternative. Twitter demotes content they don’t like, for example when mentioning competitors like Mastodon. ↩ [An Audacious Plan to Halt the Internet’s Enshittification - Cory Doctorow][1] ↩]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="en">
+      
+
+      <title type="html">Use “details” in markdown with Jekyll</title>
+      <link href="https://tevinzhang.com/en/jekyll-details/" rel="alternate" type="text/html" title="Use “details” in markdown with Jekyll" />
+      <published>2023-08-11T00:00:00+08:00</published>
+      <updated>2026-01-25T22:50:08+08:00</updated>
+      <id>https://tevinzhang.com/en/jekyll-details</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[What is details element]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+    <entry xml:lang="en">
+      
+
+      <title type="html">Data longevity and civilization’s demise</title>
+      <link href="https://tevinzhang.com/en/longevity/" rel="alternate" type="text/html" title="Data longevity and civilization’s demise" />
+      <published>2023-08-08T00:00:00+08:00</published>
+      <updated>2026-09-10T13:59:10+08:00</updated>
+      <id>https://tevinzhang.com/en/longevity</id>
+      
+      
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>Tevin Zhang</name>
+        
+          <email>hey(at)tevinzhang(dot)com</email>
+        
+        
+      </author>
+
+      
+        
+      
+
+      
+
+      
+      
+        <summary type="html"><![CDATA[I’ve had this wild theory about data longevity and the end of human civilization for a long time.]]></summary>
+      
+
+      
+      
+        
+        <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://tevinzhang.com/assets/avatar.png" />
+        <media:content medium="image" url="https://tevinzhang.com/assets/avatar.png" xmlns:media="http://search.yahoo.com/mrss/" />
+      
+    </entry>
+  
+</feed>

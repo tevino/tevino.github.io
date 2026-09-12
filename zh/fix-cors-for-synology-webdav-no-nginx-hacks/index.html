@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>修复群晖 WebDAV 的 CORS 问题，不改 Nginx | Tevin Zhang</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="修复群晖 WebDAV 的 CORS 问题，不改 Nginx" />
+<meta name="author" content="Tevin Zhang" />
+<meta property="og:locale" content="zh" />
+<meta name="description" content="如何解决使用群晖 WebDAV 服务器时浏览器应用遇到的 CORS 超时问题。这个方案用 HAProxy 来可靠地处理 CORS 预检请求，避免 Nginx 配置文件被意外覆盖的痛苦。" />
+<meta property="og:description" content="如何解决使用群晖 WebDAV 服务器时浏览器应用遇到的 CORS 超时问题。这个方案用 HAProxy 来可靠地处理 CORS 预检请求，避免 Nginx 配置文件被意外覆盖的痛苦。" />
+<link rel="canonical" href="https://tevinzhang.com/zh/fix-cors-for-synology-webdav-no-nginx-hacks/" />
+<meta property="og:url" content="https://tevinzhang.com/zh/fix-cors-for-synology-webdav-no-nginx-hacks/" />
+<meta property="og:site_name" content="Tevin Zhang" />
+<meta property="og:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-01-22T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="https://tevinzhang.com/assets/avatar.png" />
+<meta property="twitter:title" content="修复群晖 WebDAV 的 CORS 问题，不改 Nginx" />
+<meta name="twitter:site" content="@tevin_zhang" />
+<meta name="twitter:creator" content="@tevin_zhang" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Tevin Zhang"},"dateModified":"2026-01-25T22:50:08+08:00","datePublished":"2026-01-22T00:00:00+08:00","description":"如何解决使用群晖 WebDAV 服务器时浏览器应用遇到的 CORS 超时问题。这个方案用 HAProxy 来可靠地处理 CORS 预检请求，避免 Nginx 配置文件被意外覆盖的痛苦。","headline":"修复群晖 WebDAV 的 CORS 问题，不改 Nginx","image":"https://tevinzhang.com/assets/avatar.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://tevinzhang.com/zh/fix-cors-for-synology-webdav-no-nginx-hacks/"},"url":"https://tevinzhang.com/zh/fix-cors-for-synology-webdav-no-nginx-hacks/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://tevinzhang.com/feed.xml" title="Tevin Zhang" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#0F64B5">
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#FFFBEA">
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+<meta name="theme-color" content="#FFFBEA">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1a1f24">
+<meta name="robots" content="noai, noimageai">
+
+
+<script type="text/javascript">
+  (function (c, l, a, r, i, t, y) {
+    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+  })(window, document, "clarity", "script", "htf4lzs4f1");
+</script>
+
+
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.tevinzhang.com"]);
+  _paq.push(["setDomains", ["*.tevinzhang.com","*.tevino.github.io"]]);
+  _paq.push(["enableCrossDomainLinking"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//a.tevinzhang.com/m/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="//a.tevinzhang.com/m/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+
+</head><body><header class="site-header">
+    <div class="wrapper">
+<a class="site-title" rel="author" href="/zh">Tevin Zhang</a><nav class="site-nav">
+            <input type="checkbox" id="nav-trigger">
+            <label for="nav-trigger">
+                <span class="menu-icon"></span>
+            </label>
+
+            <div class="nav-items">
+<a class="nav-item" href="/zh/projects/">工坊</a><a class="nav-item" href="/zh/curated-corner/">推荐区</a><a class="nav-item" href="/zh/now/">近况</a><a class="nav-item" href="/zh/about/">关于</a>
+</div>
+        </nav>
+</div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">修复群晖 WebDAV 的 CORS 问题，不改 Nginx</h1>
+<p class="post-meta">
+      <a class="page-link" href="/en/fix-cors-for-synology-webdav-no-nginx-hacks/" title="英文">
+        英文
+      </a><span> | </span><span class="lang-current">中文</span>
+  | <strong>以下是机翻内容</strong></p>
+</header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>如何解决使用群晖 WebDAV 服务器时浏览器应用遇到的 CORS 超时问题。这个方案用 HAProxy 来可靠地处理 CORS 预检请求，避免 Nginx 配置文件被意外覆盖的痛苦。</p>
+<p><strong>前提条件</strong>：SSH 访问权限、已安装 Docker 或 HAProxy。</p>
+<p><strong>解决方案</strong>：HAProxy 3.2 在请求到达 WebDAV 后端之前拦截 OPTIONS 请求</p>
+<hr>
+<p>群晖自带的 WebDAV 服务器和原生客户端配合得很好，但和浏览器应用一起用就会出问题，因为 CORS 预检（<code>OPTIONS</code>）请求会超时，返回 <code>504</code> 错误。</p>
+<p>这是因为 WebDAV 后端没有正确处理浏览器的预检请求。</p>
+<h2>现有的解决方案</h2>
+<h3>Nginx 临时修改</h3>
+<p>一个常见的办法是修改 Nginx 配置文件来绕过问题。但问题在于？这些文件是 DSM 管理的，在你改设置、重启、更新 DSM，有时甚至只是重启一下系统后，都可能被覆盖掉。</p>
+<p>最惨的是，你的改动了在没有任何通知的情况下就消失了。突然之间 WebDAV 集成就不工作了，你得拼命回忆几个月前到底改了什么。恢复这些配置既耗时又不可靠。和这个机制对着干既不明智也不可持续。</p>
+<h3>搭建专门的 WebDAV 服务器</h3>
+<p>搭建像 Nextcloud 或 Apache 这样的专用 WebDAV 服务器确实可以，但如果只是为了解决 CORS 问题，这就有点杀鸡用牛刀了。</p>
+<p>你可能不想为了这么点事就搭建和维护另一个带认证的完整 WebDAV 服务器。</p>
+<h3>内置反向代理</h3>
+<p>虽然群晖的反向代理可以添加自定义响应头，但它不能终止或短路 CORS 预检请求。<code>OPTIONS</code> 请求还是会转发到后端，然后卡在那里直到超时。</p>
+<h2>解决方案</h2>
+<p>在内置 WebDAV 前面加个专门的反向代理来处理 CORS，这已经很接近完美了，但如果你不想为反向代理单独配置 SSL 证书，继续往下看。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>浏览器 / 网页应用 (HTTPS)
+   ↓
+群晖反向代理 (TLS 终止)
+   ↓
+HAProxy (Docker，仅 HTTP，处理 CORS)
+   ↓
+群晖 WebDAV 服务器 (127.0.0.1:5005)
+</code></pre></div></div>
+<p>我知道为了这么个简单需求搞这么多看起来有点夸张，但它在维护方面赢了：你只需要配置一次，然后就不用管了，即使 DSM 更新它也能继续工作。</p>
+<p>HAProxy 配置：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>frontend webdav_in
+    bind *:指定端口号
+    mode http
+
+   acl is_preflight method OPTIONS
+
+   # 处理 CORS 预检
+   http-request return status 204 hdr Access-Control-Allow-Origin https://app.example.com hdr Access-Control-Allow-Methods "GET, PUT, POST, DELETE, PROPFIND, OPTIONS" hdr Access-Control-Allow-Headers "Authorization, Content-Type, Depth" hdr Access-Control-Allow-Credentials true hdr Access-Control-Max-Age 86400 if is_preflight
+
+   # 总是在实际响应中添加 CORS 头
+   http-response set-header Access-Control-Allow-Origin https://app.example.com
+   http-response set-header Access-Control-Allow-Credentials true
+
+   default_backend webdav_backend
+
+backend webdav_backend
+    mode http
+    server webdav 127.0.0.1:5005
+</code></pre></div></div>
+<p>把这个保存为 <code>haproxy.cfg</code>，然后用 Docker 运行 HAProxy：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="bash">docker run <span class="nt">-d</span> <span class="nt">--name</span> haproxy-webdav <span class="nt">--network</span> host <span class="nt">-v</span> /path/to/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro haproxy:3.2
+</code></pre></div></div>
+<p>记得用 <code>--network host</code>，这样 HAProxy 才能访问到 localhost 上的 WebDAV 服务器，或者根据你的环境修改 <code>127.0.0.1:5005</code>。</p>
+<h2>测试 CORS</h2>
+<p>用简单的 curl 命令验证 CORS 是否工作：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code data-lang="bash">curl <span class="nt">-I</span> <span class="nt">-X</span> PROPFIND https://your-synology:PORT/ <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Origin: https://app.example.com"</span> <span class="se">\</span>
+  <span class="nt">-u</span> <span class="s1">'user:password'</span>
+</code></pre></div></div>
+<p>你应该能在响应中看到这样的头：</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>access-control-allow-origin: https://app.example.com
+access-control-allow-credentials: true
+</code></pre></div></div>
+<hr>
+<p><strong>P.S. 如果群晖的人看到这个：能否请你帮忙提高一下 WebDAV 的 CORS 支持优先级？这样用户就不用看这篇文章来折腾了。谢谢！:)</strong></p>
+
+  </div>
+<p class="post-meta">
+    <time class="dt-published" datetime="2026-01-22T00:00:00+08:00" itemprop="datePublished">
+      2026-01-22
+    </time></p>
+<a class="u-url" href="/zh/fix-cors-for-synology-webdav-no-nginx-hacks/" hidden></a>
+</article>
+
+      </div>
+    </main>
+<link id="fa-stylesheet" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css">
+<footer class="site-footer h-card">
+    <data class="u-url" value="/"></data>
+  
+    <div class="wrapper">
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col">
+          <p class="feed-subscribe">
+            
+            <a href="https://tevinzhang.com/zh/feed.xml">
+              <svg class="svg-icon orange" viewbox="0 0 16 16">
+                <path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194
+                  11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0
+                  13.806c0-1.21.983-2.195 2.194-2.195zM10.606
+                  16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"></path>
+              </svg><span>订阅（仅中文）</span>
+            </a>
+          </p>
+          <ul class="contact-list">
+            <li class="p-name">Tevin Zhang</li>
+            <li><a class="u-email" href="mailto:hey(at)tevinzhang(dot)com">hey(at)tevinzhang(dot)com</a></li>
+              <li><a href="/pgp.asc" rel="pgpkey authn">PGP Key</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p><a class="page-link" href="/en" title="English Only">English</a><span> | </span><span class="lang-current">中文</span></p>
+<a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://tevinzhang.com">张天文</a> © 2013–2026 — CC BY-NC-SA 4.0<p></p>
+<p>A slice of Tevin's mind.</p>
+
+        </div>
+      </div>
+  
+      <div class="social-links">
+<ul class="social-media-list">
+<li>
+    <a rel="me noopener" href="https://mastodon.tevinzhang.com/@tevin" target="_blank" title="The fediverse">
+      <span class="grey fa-brands fa-mastodon fa-lg"></span>
+    </a>
+  </li>
+<li>
+    <a rel="me noopener" href="https://t.me/tevino" target="_blank" title="Personal Telegram">
+      <span class="grey fa-brands fa-telegram fa-lg"></span>
+    </a>
+  </li>
+<li>
+    <a rel="me noopener" href="https://github.com/tevino" target="_blank" title="Things I made as a programmer publicly">
+      <span class="grey fa-brands fa-github fa-lg"></span>
+    </a>
+  </li>
+</ul>
+</div>
+  
+    </div>
+  
+  </footer>
+
+</body>
+
+</html>
